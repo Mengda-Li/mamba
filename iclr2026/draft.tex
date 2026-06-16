@@ -52,7 +52,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-\title{From Compressor to Diffusor: Spectral Analysis of SSMs via State-Space Duality}
+\title{Spectral Analysis of Structured Causal Attention via State-Space Duality}
 
 % Authors must not appear in the submitted version. They should be hidden
 % as long as the \iclrfinalcopy macro remains commented out below.
@@ -69,23 +69,33 @@
 \maketitle
 
 \begin{abstract}
-{\color{blue}
-[SSMs are being seen as the replacement and competitor of Transformers model because of its linear inference computation cost. A central question is to understand their theoretical difference, we want to do this via the spectral analysis. (From Mamba2,) we can unify the SSMs (and some other model) by the State-Space Duality into the framework of structured causal attention.]
+{
+SSMs are increasingly viewed as replacements for, and competitors to,
+Transformer models because of their linear inference cost.  A central question
+is to understand their theoretical differences from Transformers, and we
+approach this question through spectral analysis.  Following Mamba-2,
+State-Space Duality allows us to unify SSMs and several related models within
+the framework of structured causal attention.
 }
 \(
         \bM=\bL\hadamard \bQ\bK^\top,
 \)
 where $\bL$ is a structured causal mask.  
-{\color{blue}
-Self-attention behaves spectrally as information compressor, the spikes in the spectrum are perserved while the bulk degenerates for long sequences. 
-However, the SSMs behaves more like information diffusor.
-Low-rank query key matrices in the trained network even can have a diffuse spectra distribution with no degeneration,
+{
+Self-attention behaves spectrally as an information compressor: the spikes in
+the spectrum are preserved, while the bulk degenerates for long sequences.
+By contrast, SSMs behave more like information diffusors.  Even low-rank
+query-key matrices in trained networks can have diffuse spectral distributions
+without degeneration.
 }
 \end{abstract}
 
 \section{Introduction}
-{\color{blue}
-[SSMs are being seen as the replacement and competitor of Transformers model because of its linear inference computation cost. A central question is to understand their theoretical difference, we want to do this via the spectral analysis.]}
+% {\color{blue}
+% [SSMs are increasingly viewed as replacements for, and competitors to,
+% Transformer models because of their linear inference cost.  A central question
+% is to understand their theoretical differences from Transformers, and we
+% approach this question through spectral analysis.]}
 Transformers and state-space sequence models are now two central paradigms for
 long-context modeling.  A useful way to compare them is not only by their
 computational cost, but by how their token-token matrices move information
@@ -481,7 +491,12 @@ $\erank_{\mathrm{sing}}(\bM)\geq c\log\ell$ with probability tending to one.
 \begin{figure}[t]
   \centering
   \includesvg[width=\linewidth]{figure/layer0_m_rank_vs_length_iqr2.svg}
-  \caption{Stable rank and effective rank of Mamba-2 attention matrices (layer 0) on the Wikitext-103 validation split as a function of sequence length.  Curves show the median trend, with interquartile ranges and wider percentile bands.}
+  \caption{Stable rank and effective rank of the layer-0 structured attention
+  matrices from the Mamba-2 
+  \texttt{mistralai/Mamba-Codestral-7B-v0.1} on Hugging Face, evaluated on the
+  Wikitext-103 validation split as a function of sequence length.  Curves show
+  median trends; shaded bands indicate interquartile ranges and wider
+  percentile intervals.}
   \label{fig:rank-wikitext}
 \end{figure}
 
@@ -769,7 +784,7 @@ independent by assumption, so Slutsky's theorem proves
 by setting $L_{ii}=1$ in this limit.
 \end{proof}
 
-\section{Eigenvalue Details}
+\subsection{Eigenvalue Details}
 \label{app:eigenvalue-details}
 
 \begin{proposition}[Non-collapse of the eigenvalue empirical law]
@@ -1071,7 +1086,7 @@ not apply here.
 \label{rem:rho-star-not-one}
 \end{remark}
 
-\section{Singular-Value Details}
+\subsection{Singular-Value Details}
 \label{app:singular-details}
 
 \begin{proposition}[Low-rank singular-value reduction]
