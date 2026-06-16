@@ -10,7 +10,7 @@ The central question is:
 
 > How does the choice of structured mask \(L\) change the spectral domain of
 > \[
-> M = L \circ QK^\top,
+> M = L \odot QK^\top,
 > \]
 > and can these spectral differences explain fundamental behavioral differences between Mamba-like models and Transformers?
 
@@ -31,29 +31,46 @@ In particular, we would like to compare linear attention, Mamba-2/SSD-type atten
 - Discussion reference:
   - [Difference between Mamba and Transformer](https://www.zhihu.com/question/651838446)
   - This motivates the "no free lunch" intuition: reducing attention from \(O(\ell^2)\) to \(O(\ell)\) should impose structural restrictions, and these restrictions may be visible in the spectrum.
-
+- My softmax attention spectrum paper
+- Toeplitz: [Toeplitz Neural Network for Sequence Modeling](https://arxiv.org/pdf/2305.04749)
+- Decay Mask: [Retentive Network: A Successor to Transformer for Large Language Models](https://arxiv.org/pdf/2307.08621)
+- 
 ## 3. Model
 
 ![image](https://goombalab.github.io/assets/img/2024-05-31-mamba-2/sma.png)
 
 Following the structured masked attention viewpoint in the Mamba-2 paper/blog, we model a family of structured attention matrices by
 \[
-M = L \circ QK^\top \in \mathbb{R}^{\ell \times \ell},
+M = L \odot QK^\top \in \mathbb{R}^{\ell \times \ell},
 \]
 where \(\ell > 0\) is the sequence length, \(d > 0\) is the hidden dimension, \(Q,K \in \mathbb{R}^{\ell \times d}\), and \(L \in \mathbb{R}^{\ell \times \ell}\) is a structured mask.
 
 Different choices of \(L\) recover different models or candidate models:
 
 - If \(L\) is the causal mask, i.e. lower triangular with ones on and below the diagonal and zeros above the diagonal, then \(M\) corresponds to causal linear attention.
+    \[
+    L = \begin{bmatrix} 1 \\ \vdots & \ddots \\ 1 & \dots & 1 \end{bmatrix}
+    \]
 - If \(L\) is a **1-semiseparable matrix**, then \(M\) corresponds to the SSD/Mamba-2 structured masked attention form.
 \[
     L = \begin{bmatrix} 1 & \\ a_1 & 1 & \\ a_2a_1 & a_2 & 1 \\ \vdots & \vdots & \ddots & \ddots \\ a_{\mathtt{T}-1}\dots a_1 & a_{\mathtt{T}-1}\dots a_2 & \dots & a_{\mathtt{T}-1} & 1 \\ \end{bmatrix} .
 \]
+in Mamba, 
+\[
+M = \begin{bmatrix} C_0^\top B_0 & \\ C_1^\top A_1 B_0 & C_1^\top B_1 & \\ C_2^\top A_2A_1 B_0 & C_2^\top A_2 B_1 & C_2^\top B_2 \\ \vdots & \vdots & \ddots & \ddots \\ C_\mathtt{T}^\top A_{\mathtt{T}-1}\dots A_1 B_0 & C_\mathtt{T}^\top A_{\mathtt{T}-1}\dots A_2 B_1 & \dots & C_\mathtt{T}^\top A_{\mathtt{T}-1} B_{\mathtt{T}-2} & C_\mathtt{T}^\top B_{\mathtt{T}-1} \\ \end{bmatrix}
+\]
+$K:= B, Q:=C$. $B_i, C_i$ are rows of matrix $B, C$. From Mamba2, $A_i = a_i I$.
 - If \(L\) is a lower triangular Toeplitz matrix, then \(M\) resembles a causal convolutional or Toeplitz structured attention.
 - If \(L\) is a lower triangular decay mask, then \(M\) resembles retention/decay-based attention.
 - If \(L\) is a Fourier or Fourier-related structured matrix, then \(M\) may connect to FNet/Fourier-type sequence mixing and frequency-domain positional structure.
 
 ### 3.1 Assumptions
+
+By Mamba construction, 
+- $a_i \in (0,1)$ as ($A = \sigma(-\text{Linear}(X))$)
+- $B_{ij}\in (0,1)$ as $B = \sigma(\text{Linear}(X))$. $K:=B$ in the structured attention.
+- The token space (sequence length $\ell$) is dependent, hence the left singular spaces of $Q,K$ and $A$ are dependent; but the projection space (inner dimension $d$) should be able to assume independent.
+- $B, C$ ($Q,K$) are low-rank.
 
 In Transformers, \(Q = XW_Q\) and \(K = XW_K\), where \(W_Q,W_K\) are projection matrices. Therefore, the left singular vectors of \(Q\) and \(K\) are generally dependent through the shared input \(X\). However, as a tractable first step, we may assume that:
 
@@ -65,6 +82,7 @@ We plan to study both the initialization stage and the trained stage.
 
 - At initialization, we can suppose that \(Q\) and \(K\) are independent i.i.d. Gaussian matrices. In the Hayase--Collins--Karakida setting, if \(X\) is orthogonal and independent of an i.i.d. Gaussian \(W_Q\), then by the left Haar invariance of the Ginibre ensemble, \(XW_Q \stackrel{\mathrm{law}}{=} W_Q\). Hence, it is reasonable to begin with \(Q,K\) as Ginibre ensembles.
 - At the trained stage, we can suppose that \(Q\) and \(K\) are effectively low rank, motivated by the observation that the effective rank of softmax attention remains almost constant as the sequence length increases (reference: my paper on softmax attention).
+  - For Low-rank $Q,K$, I think we can suppose the right singular matrices are Haar-distributed to facilate the calculation, $|<v_q, v_k>| = O_p(d^{-1/2})$ where $v_q, v_k$ are right singular vectors of $Q,K$. This corresponds to the recent RabitQ compression of query and key.
 
 ### 3.2 Spectral Quantities of Interest
 
@@ -84,7 +102,7 @@ Possible theoretical results include:
 
 - Derive the limiting singular value distribution of
   \[
-  M = L \circ QK^\top
+  M = L \odot QK^\top
   \]
   for several structured masks \(L\), beginning with the causal mask and 1-semiseparable mask.
 - Compare the spectral domains of causal linear attention, Mamba-2/SSD, Toeplitz attention, decay masks, and Fourier masks.
@@ -97,7 +115,7 @@ Possible theoretical results include:
 
 As a first stage, we can treat \(L\) as deterministic and structured, and take \(Q,K\) as independent Gaussian matrices. Then \(QK^\top\) is a random low-rank or full-rank bilinear matrix depending on the relation between \(\ell\) and \(d\). The main difficulty is to understand the Hadamard product
 \[
-L \circ QK^\top.
+L \odot QK^\top.
 \]
 
 Potential approaches:
