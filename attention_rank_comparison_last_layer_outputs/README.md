@@ -12,7 +12,7 @@ token-mixing layer of each checkpoint.
 
 Based's model has 27 zero-indexed blocks, but its global linear-attention
 blocks are only `[1, 6, 11, 16, 21]`. Layer 21 is therefore the last Based
-layer with the causal-linear operator being compared in the 3x3 figure.
+layer with the causal-linear operator being compared in the combined figures.
 
 ## Sampling
 
@@ -28,6 +28,8 @@ layer with the causal-linear operator being compared in the 3x3 figure.
 
 - `based_mamba2_retnet_rank_vs_length_iqr_3x3.svg` / `.png`: requested 3x3
   structured-model comparison.
+- `based_mamba2_retnet_gpt2_rank_vs_length_iqr_4x3.svg` / `.png`: 4x3
+  comparison with final-layer GPT-2 in the fourth row.
 - `gpt2_rank_vs_length_iqr.svg` / `.png`: requested final-layer GPT-2 figure.
 - `{based,mamba2,retnet}_rank_vs_length_iqr.svg` / `.png`: individual
   final-layer structured-model figures.

@@ -1068,7 +1068,12 @@ def plot_rank_axis(
 
     axis.set_ylim(bottom=0)
     axis.grid(True, alpha=0.25)
-    axis.legend(loc="upper left", fontsize=8, frameon=False)
+    legend_location = (
+        "lower right"
+        if model == "based" and metric in {"stable_rank", "erank_2"}
+        else "best"
+    )
+    axis.legend(loc=legend_location, fontsize=8, frameon=False)
 
 
 def plot_model_rank_panels(summary: pd.DataFrame, out_dir: Path) -> list[Path]:
@@ -1102,13 +1107,25 @@ def plot_model_rank_panels(summary: pd.DataFrame, out_dir: Path) -> list[Path]:
     return written
 
 
-def plot_structured_rank_grid(summary: pd.DataFrame, out_dir: Path) -> Path | None:
-    """Write the requested 3-model by 3-rank-proxy comparison figure."""
-    models = ["based", "mamba2", "retnet"]
+def plot_rank_grid(
+    summary: pd.DataFrame,
+    out_dir: Path,
+    models: list[str],
+    filename: str,
+    title: str,
+) -> Path | None:
+    """Write a model-by-rank-proxy comparison figure."""
     if not set(models).issubset(set(summary["model"].unique())):
         return None
 
-    fig, axes = plt.subplots(3, 3, figsize=(16.0, 12.0), sharex=True, squeeze=False)
+    row_count = len(models)
+    fig, axes = plt.subplots(
+        row_count,
+        3,
+        figsize=(16.0, 4.0 * row_count),
+        sharex=True,
+        squeeze=False,
+    )
     for row_index, model in enumerate(models):
         model_frame = summary[summary["model"] == model]
         for column_index, (metric, ylabel) in enumerate(METRICS):
@@ -1143,16 +1160,38 @@ def plot_structured_rank_grid(summary: pd.DataFrame, out_dir: Path) -> Path | No
 
     fig.supxlabel("sequence length (tokens)", fontsize=11)
     fig.suptitle(
-        "WikiText-103 validation — structured-model rank comparison\n"
+        f"WikiText-103 validation — {title}\n"
         "median over head/window samples; dark band = IQR, light band = 10–90%",
         fontsize=14,
     )
-    fig.tight_layout(rect=(0.055, 0.04, 1, 0.93), h_pad=2.0, w_pad=1.8)
-    out_path = out_dir / "based_mamba2_retnet_rank_vs_length_iqr_3x3.svg"
+    fig.tight_layout(rect=(0.055, 0.035, 1, 0.94), h_pad=2.0, w_pad=1.8)
+    out_path = out_dir / filename
     fig.savefig(out_path, bbox_inches="tight")
     fig.savefig(out_path.with_suffix(".png"), dpi=200, bbox_inches="tight")
     plt.close(fig)
     return out_path
+
+
+def plot_combined_rank_grids(summary: pd.DataFrame, out_dir: Path) -> list[Path]:
+    """Write the 3x3 structured-model grid and the 4x3 grid with GPT-2."""
+    specifications = [
+        (
+            ["based", "mamba2", "retnet"],
+            "based_mamba2_retnet_rank_vs_length_iqr_3x3.svg",
+            "structured-model rank comparison",
+        ),
+        (
+            ["based", "mamba2", "retnet", "gpt2"],
+            "based_mamba2_retnet_gpt2_rank_vs_length_iqr_4x3.svg",
+            "structured models and GPT-2 rank comparison",
+        ),
+    ]
+    written = []
+    for models, filename, title in specifications:
+        path = plot_rank_grid(summary, out_dir, models, filename, title)
+        if path is not None:
+            written.append(path)
+    return written
 
 
 def write_aggregates(csv_path: Path, out_dir: Path, slope_min_length: int) -> None:
@@ -1170,13 +1209,13 @@ def write_aggregates(csv_path: Path, out_dir: Path, slope_min_length: int) -> No
     slopes = estimate_asymptotic_slopes(summary, slope_min_length)
     slopes.to_csv(out_dir / "asymptotic_loglog_slopes.csv", index=False)
     figure_paths = plot_model_rank_panels(summary, out_dir)
-    grid_path = plot_structured_rank_grid(summary, out_dir)
+    grid_paths = plot_combined_rank_grids(summary, out_dir)
     print(f"wrote {csv_path}")
     print(f"wrote {summary_path}")
     print(f"wrote {out_dir / 'asymptotic_loglog_slopes.csv'}")
     for figure_path in figure_paths:
         print(f"wrote {figure_path}")
-    if grid_path is not None:
+    for grid_path in grid_paths:
         print(f"wrote {grid_path}")
 
 

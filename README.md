@@ -23,5 +23,6 @@ rerunning model inference are documented in
 
 Final-layer results are in `attention_rank_comparison_last_layer_outputs/`.
 They evaluate Based layer 21 (its last global linear-attention block), Mamba-2
-layer 63, RetNet layer 23, and GPT-2 layer 11. See that directory's `README.md`
-for the full command and memory settings.
+layer 63, RetNet layer 23, and GPT-2 layer 11. The four-model grid is
+`based_mamba2_retnet_gpt2_rank_vs_length_iqr_4x3.svg`; see that directory's
+`README.md` for the full command and memory settings.
