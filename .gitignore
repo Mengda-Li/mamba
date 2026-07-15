@@ -1,0 +1,29 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Local notebooks and scratch files
+/*.ipynb
+/=1.4.0
+
+# Unrelated generated experiment artifacts
+/layer_hist_long_layer0_outputs/
+/layer_hist_longest_row_outputs/
+/layer_hist_outputs/
+/layer_hist_row533_outputs/
+/layer_hist_smoke/
+/layer_hist_smoke_short/
+/rank_length_long_outputs/
+/rank_length_outputs/
+/rank_length_per_layer_outputs/
+/rank_length_smoke/
+/spectra_outputs/
+/spectra_smoke/
+/wikitext103_raw_val_length_audit.csv
+
+# Editor and OS files
+.DS_Store
+*.swp
+*.swo
