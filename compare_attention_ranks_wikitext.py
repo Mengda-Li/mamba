@@ -1181,7 +1181,7 @@ def plot_combined_rank_grids(summary: pd.DataFrame, out_dir: Path) -> list[Path]
             "structured-model rank comparison",
         ),
         (
-            ["based", "mamba2", "retnet", "gpt2"],
+            ["gpt2", "based", "mamba2", "retnet"],
             "based_mamba2_retnet_gpt2_rank_vs_length_iqr_4x3.svg",
             "structured models and GPT-2 rank comparison",
         ),

@@ -29,7 +29,7 @@ layer with the causal-linear operator being compared in the combined figures.
 - `based_mamba2_retnet_rank_vs_length_iqr_3x3.svg` / `.png`: requested 3x3
   structured-model comparison.
 - `based_mamba2_retnet_gpt2_rank_vs_length_iqr_4x3.svg` / `.png`: 4x3
-  comparison with final-layer GPT-2 in the fourth row.
+  comparison ordered GPT-2, Based, Mamba-2, and RetNet from top to bottom.
 - `gpt2_rank_vs_length_iqr.svg` / `.png`: requested final-layer GPT-2 figure.
 - `{based,mamba2,retnet}_rank_vs_length_iqr.svg` / `.png`: individual
   final-layer structured-model figures.
