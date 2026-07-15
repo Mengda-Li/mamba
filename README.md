@@ -15,8 +15,8 @@ uv run python compare_attention_ranks_wikitext.py \
   --out-dir attention_rank_comparison_outputs
 ```
 
-The combined Based/Mamba-2/RetNet figure is
-`attention_rank_comparison_outputs/based_mamba2_retnet_rank_vs_length_iqr_3x3.svg`.
+The four-model first-layer figure is
+`attention_rank_comparison_outputs/based_mamba2_retnet_gpt2_rank_vs_length_iqr_4x3.svg`.
 Full checkpoint paths, sampling details, operator definitions, and commands for
 rerunning model inference are documented in
 `attention_rank_comparison_outputs/README.md`.

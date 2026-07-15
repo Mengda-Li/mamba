@@ -64,6 +64,8 @@ controlled causal comparison of training recipes.
 - `gpt2_rank_vs_length_iqr.svg` / `.png`: GPT-2 panels without a theory curve.
 - `based_mamba2_retnet_rank_vs_length_iqr_3x3.svg` / `.png`: the combined
   3-model by 3-rank-proxy grid, ordered Based, Mamba-2, and RetNet by row.
+- `based_mamba2_retnet_gpt2_rank_vs_length_iqr_4x3.svg` / `.png`: the
+  four-model grid, ordered GPT-2, Based, Mamba-2, and RetNet by row.
 - `windows.csv`: exact source text and reference-token offsets.
 
 ## Theoretical reference curves
