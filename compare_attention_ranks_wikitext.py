@@ -433,32 +433,15 @@ def release_memory(*objects) -> None:
         torch.cuda.empty_cache()
 
 
-class BasedLayerOneExtractor:
-    """Minimal exact forward to Based-360M's first global linear layer.
+class BasedExtractor:
+    """Pure-PyTorch forward to a trained Based global linear-attention layer.
 
-    The upstream Based package is pinned to Python 3.8 / Torch 2.1 and requires
-    legacy FlashAttention extensions. Only layer 0 is needed to obtain the
-    trained input to layer 1, so reproducing those elementary PyTorch
-    operations avoids changing this project's modern environment.
+    The released package is tied to legacy FlashAttention extensions. This
+    reproduces its inference-time BaseConv, Taylor linear-attention,
+    sliding-attention, RMSNorm, and SwiGLU operations using current PyTorch.
     """
 
-    REQUIRED_KEYS = [
-        "transformer.embeddings.word_embeddings.weight",
-        "transformer.layers.0.norm1.weight",
-        "transformer.layers.0.mixer.in_proj.weight",
-        "transformer.layers.0.mixer.in_proj.bias",
-        "transformer.layers.0.mixer.conv.conv.weight",
-        "transformer.layers.0.mixer.out_proj.weight",
-        "transformer.layers.0.mixer.out_proj.bias",
-        "transformer.layers.0.norm2.weight",
-        "transformer.layers.0.mlp.fc1.weight",
-        "transformer.layers.0.mlp.fc2.weight",
-        "transformer.layers.1.norm1.weight",
-        "transformer.layers.1.mixer.proj_q.weight",
-        "transformer.layers.1.mixer.proj_k.weight",
-    ]
-
-    def __init__(self, model_path: str, device: torch.device):
+    def __init__(self, model_path: str, device: torch.device, target_layer: int):
         config_path = Path(model_path) / "config.json"
         weight_path = Path(model_path) / "pytorch_model.bin"
         if not config_path.exists() or not weight_path.exists():
@@ -467,19 +450,88 @@ class BasedLayerOneExtractor:
             )
         with config_path.open("r", encoding="utf-8") as handle:
             self.config = json.load(handle)
-        if self.config.get("alt_mixer_layers", [None])[0] != 1:
-            raise ValueError("This extractor expects the first Based linear-attention layer at index 1.")
+        self.target_layer = int(target_layer)
+        self.linear_layers = set(int(layer) for layer in self.config.get("alt_mixer_layers", []))
+        self.sliding_layers = set(int(layer) for layer in self.config.get("alt_mixer_2_layers", []))
+        if self.target_layer not in self.linear_layers:
+            raise ValueError(
+                f"Based layer {self.target_layer} is not a global linear-attention layer; "
+                f"choose from {sorted(self.linear_layers)}.",
+            )
+        if not 0 <= self.target_layer < int(self.config["n_layer"]):
+            raise ValueError(f"Based layer {self.target_layer} is outside the checkpoint.")
 
         state = torch.load(weight_path, map_location="cpu", weights_only=True, mmap=True)
-        missing = [key for key in self.REQUIRED_KEYS if key not in state]
+        required_keys = self.required_keys()
+        missing = [key for key in required_keys if key not in state]
         if missing:
             raise KeyError(f"Based checkpoint is missing required weights: {missing}")
-        self.weights = {key: state[key].to(device) for key in self.REQUIRED_KEYS}
+        self.weights = {key: state[key].to(device) for key in required_keys}
         self.device = device
         self.eps = float(self.config.get("layer_norm_epsilon", 1e-5))
         self.num_heads = int(self.config["alt_mixer"]["num_heads"])
         self.feature_dim = int(self.config["alt_mixer"]["feature_dim"])
+        self.hidden_size = int(self.config["n_embd"])
+        self.head_dim = self.hidden_size // self.num_heads
+        self.sliding_window = int(self.config["alt_mixer_2"]["window_size"]) // 2
         del state
+
+    def layer_key(self, layer: int, suffix: str) -> str:
+        return f"transformer.layers.{layer}.{suffix}"
+
+    def mixer_type(self, layer: int) -> str:
+        if layer in self.sliding_layers:
+            return "sliding"
+        if layer in self.linear_layers:
+            return "linear"
+        return "conv"
+
+    def required_keys(self) -> list[str]:
+        keys = ["transformer.embeddings.word_embeddings.weight"]
+        for layer in range(self.target_layer):
+            keys.extend(
+                [
+                    self.layer_key(layer, "norm1.weight"),
+                    self.layer_key(layer, "norm2.weight"),
+                    self.layer_key(layer, "mlp.fc1.weight"),
+                    self.layer_key(layer, "mlp.fc2.weight"),
+                ],
+            )
+            mixer_type = self.mixer_type(layer)
+            if mixer_type == "conv":
+                keys.extend(
+                    [
+                        self.layer_key(layer, "mixer.in_proj.weight"),
+                        self.layer_key(layer, "mixer.in_proj.bias"),
+                        self.layer_key(layer, "mixer.conv.conv.weight"),
+                        self.layer_key(layer, "mixer.out_proj.weight"),
+                        self.layer_key(layer, "mixer.out_proj.bias"),
+                    ],
+                )
+            elif mixer_type == "linear":
+                keys.extend(
+                    [
+                        self.layer_key(layer, "mixer.proj_q.weight"),
+                        self.layer_key(layer, "mixer.proj_k.weight"),
+                        self.layer_key(layer, "mixer.proj_v.weight"),
+                        self.layer_key(layer, "mixer.out_proj.weight"),
+                    ],
+                )
+            else:
+                keys.extend(
+                    [
+                        self.layer_key(layer, "mixer.Wqkv.weight"),
+                        self.layer_key(layer, "mixer.out_proj.weight"),
+                    ],
+                )
+        keys.extend(
+            [
+                self.layer_key(self.target_layer, "norm1.weight"),
+                self.layer_key(self.target_layer, "mixer.proj_q.weight"),
+                self.layer_key(self.target_layer, "mixer.proj_k.weight"),
+            ],
+        )
+        return keys
 
     def weight(self, suffix: str) -> torch.Tensor:
         return self.weights[suffix]
@@ -488,67 +540,151 @@ class BasedLayerOneExtractor:
         normalized = value.float() * torch.rsqrt(value.float().square().mean(dim=-1, keepdim=True) + self.eps)
         return normalized * weight.float()
 
-    def linear_layer_input(self, input_ids: torch.Tensor) -> torch.Tensor:
-        input_ids = input_ids.to(self.device)
-        hidden = F.embedding(input_ids, self.weight("transformer.embeddings.word_embeddings.weight"))
+    def taylor_exp(self, value: torch.Tensor) -> torch.Tensor:
+        root_d = math.sqrt(self.feature_dim)
+        quadratic = (value.unsqueeze(-1) * value.unsqueeze(-2)).flatten(start_dim=-2) / math.sqrt(2.0)
+        return torch.cat(
+            [torch.ones_like(value[..., :1]), value / math.sqrt(root_d), quadratic / root_d],
+            dim=-1,
+        )
 
-        residual = hidden
-        layer_input = self.rms_norm(hidden, self.weight("transformer.layers.0.norm1.weight"))
+    def conv_forward(self, hidden: torch.Tensor, layer: int) -> torch.Tensor:
         projected = F.linear(
-            layer_input,
-            self.weight("transformer.layers.0.mixer.in_proj.weight"),
-            self.weight("transformer.layers.0.mixer.in_proj.bias"),
+            hidden,
+            self.weight(self.layer_key(layer, "mixer.in_proj.weight")),
+            self.weight(self.layer_key(layer, "mixer.in_proj.bias")),
         )
         first, second = projected.chunk(2, dim=-1)
+        conv_weight = self.weight(self.layer_key(layer, "mixer.conv.conv.weight"))
         convolved = F.conv1d(
             first.transpose(1, 2),
-            self.weight("transformer.layers.0.mixer.conv.conv.weight"),
+            conv_weight,
             bias=None,
-            padding=self.weight("transformer.layers.0.mixer.conv.conv.weight").shape[-1] - 1,
+            padding=conv_weight.shape[-1] - 1,
             groups=first.shape[-1],
         )[..., : first.shape[1]].transpose(1, 2)
-        mixed = F.silu(convolved) * second
-        hidden = F.linear(
-            mixed,
-            self.weight("transformer.layers.0.mixer.out_proj.weight"),
-            self.weight("transformer.layers.0.mixer.out_proj.bias"),
+        return F.linear(
+            F.silu(convolved) * second,
+            self.weight(self.layer_key(layer, "mixer.out_proj.weight")),
+            self.weight(self.layer_key(layer, "mixer.out_proj.bias")),
         )
 
-        residual = residual + hidden
-        mlp_input = self.rms_norm(residual, self.weight("transformer.layers.0.norm2.weight"))
-        mlp_projected = F.linear(mlp_input, self.weight("transformer.layers.0.mlp.fc1.weight"))
-        value, gate = mlp_projected.chunk(2, dim=-1)
-        hidden = F.linear(
+    def linear_attention_forward(self, hidden: torch.Tensor, layer: int) -> torch.Tensor:
+        batch_size, seq_len, _ = hidden.shape
+        query = F.linear(hidden, self.weight(self.layer_key(layer, "mixer.proj_q.weight")))
+        key = F.linear(hidden, self.weight(self.layer_key(layer, "mixer.proj_k.weight")))
+        value = F.linear(hidden, self.weight(self.layer_key(layer, "mixer.proj_v.weight")))
+        query = query.view(batch_size, seq_len, self.num_heads, self.feature_dim).transpose(1, 2)
+        key = key.view(batch_size, seq_len, self.num_heads, self.feature_dim).transpose(1, 2)
+        value = value.view(batch_size, seq_len, self.num_heads, self.head_dim).transpose(1, 2)
+        query_features = self.taylor_exp(query)
+        key_features = self.taylor_exp(key)
+        scores = torch.einsum("bhnd,bhmd->bhnm", query_features, key_features)
+        scores = torch.tril(scores)
+        mixed = torch.einsum("bhnm,bhme->bhne", scores, value)
+        denominator = torch.einsum(
+            "bhld,bhld->bhl",
+            query_features,
+            key_features.cumsum(dim=2),
+        )
+        mixed = mixed / (denominator[..., None] + 1e-12)
+        mixed = mixed.transpose(1, 2).reshape(batch_size, seq_len, self.hidden_size)
+        return F.linear(mixed, self.weight(self.layer_key(layer, "mixer.out_proj.weight")))
+
+    def apply_rotary(self, value: torch.Tensor) -> torch.Tensor:
+        seq_len = value.shape[1]
+        inv_freq = 1.0 / (
+            10000.0
+            ** (
+                torch.arange(0, self.head_dim, 2, device=value.device, dtype=torch.float32)
+                / self.head_dim
+            )
+        )
+        frequencies = torch.outer(
+            torch.arange(seq_len, device=value.device, dtype=torch.float32),
+            inv_freq,
+        )
+        cosine = torch.cat([frequencies.cos(), frequencies.cos()], dim=-1)[None, :, None]
+        sine = torch.cat([frequencies.sin(), frequencies.sin()], dim=-1)[None, :, None]
+        first, second = value.chunk(2, dim=-1)
+        rotated = torch.cat([-second, first], dim=-1)
+        return value * cosine.to(value.dtype) + rotated * sine.to(value.dtype)
+
+    def sliding_attention_forward(self, hidden: torch.Tensor, layer: int) -> torch.Tensor:
+        batch_size, seq_len, _ = hidden.shape
+        qkv = F.linear(hidden, self.weight(self.layer_key(layer, "mixer.Wqkv.weight")))
+        qkv = qkv.view(batch_size, seq_len, 3, self.num_heads, self.head_dim)
+        attention_dtype = torch.bfloat16 if hidden.device.type == "cuda" else hidden.dtype
+        query = self.apply_rotary(qkv[:, :, 0]).transpose(1, 2).to(attention_dtype)
+        key = self.apply_rotary(qkv[:, :, 1]).transpose(1, 2).to(attention_dtype)
+        value = qkv[:, :, 2].transpose(1, 2).to(attention_dtype)
+        positions = torch.arange(seq_len, device=hidden.device)
+        lag = positions[:, None] - positions[None, :]
+        attention_mask = (lag >= 0) & (lag <= self.sliding_window)
+        context = F.scaled_dot_product_attention(
+            query,
+            key,
+            value,
+            attn_mask=attention_mask[None, None],
+            dropout_p=0.0,
+        )
+        context = context.transpose(1, 2).reshape(batch_size, seq_len, self.hidden_size)
+        return F.linear(
+            context.to(hidden.dtype),
+            self.weight(self.layer_key(layer, "mixer.out_proj.weight")),
+        )
+
+    def mixer_forward(self, hidden: torch.Tensor, layer: int) -> torch.Tensor:
+        mixer_type = self.mixer_type(layer)
+        if mixer_type == "conv":
+            return self.conv_forward(hidden, layer)
+        if mixer_type == "linear":
+            return self.linear_attention_forward(hidden, layer)
+        return self.sliding_attention_forward(hidden, layer)
+
+    def mlp_forward(self, hidden: torch.Tensor, layer: int) -> torch.Tensor:
+        projected = F.linear(hidden, self.weight(self.layer_key(layer, "mlp.fc1.weight")))
+        value, gate = projected.chunk(2, dim=-1)
+        return F.linear(
             value * F.silu(gate),
-            self.weight("transformer.layers.0.mlp.fc2.weight"),
+            self.weight(self.layer_key(layer, "mlp.fc2.weight")),
         )
 
-        residual = residual + hidden
-        return self.rms_norm(residual, self.weight("transformer.layers.1.norm1.weight"))
+    def target_layer_input(self, input_ids: torch.Tensor) -> torch.Tensor:
+        input_ids = input_ids.to(self.device)
+        hidden = F.embedding(input_ids, self.weight("transformer.embeddings.word_embeddings.weight"))
+        residual = None
+        for layer in range(self.target_layer):
+            residual = hidden if residual is None else residual + hidden
+            mixer_input = self.rms_norm(residual, self.weight(self.layer_key(layer, "norm1.weight")))
+            hidden = self.mixer_forward(mixer_input, layer)
+            residual = residual + hidden
+            mlp_input = self.rms_norm(residual, self.weight(self.layer_key(layer, "norm2.weight")))
+            hidden = self.mlp_forward(mlp_input, layer)
+        residual = hidden if residual is None else residual + hidden
+        return self.rms_norm(
+            residual,
+            self.weight(self.layer_key(self.target_layer, "norm1.weight")),
+        )
 
     def matrices(self, input_ids: torch.Tensor, heads: list[int]) -> dict[str, torch.Tensor]:
-        hidden = self.linear_layer_input(input_ids)
-        query = F.linear(hidden, self.weight("transformer.layers.1.mixer.proj_q.weight"))
-        key = F.linear(hidden, self.weight("transformer.layers.1.mixer.proj_k.weight"))
+        hidden = self.target_layer_input(input_ids)
+        query = F.linear(
+            hidden,
+            self.weight(self.layer_key(self.target_layer, "mixer.proj_q.weight")),
+        )
+        key = F.linear(
+            hidden,
+            self.weight(self.layer_key(self.target_layer, "mixer.proj_k.weight")),
+        )
         batch_size, seq_len, _ = query.shape
         query = query.view(batch_size, seq_len, self.num_heads, self.feature_dim).transpose(1, 2)
         key = key.view(batch_size, seq_len, self.num_heads, self.feature_dim).transpose(1, 2)
         head_index = torch.as_tensor(heads, device=self.device, dtype=torch.long)
         query = query.index_select(1, head_index).float()
         key = key.index_select(1, head_index).float()
-
-        root_d = math.sqrt(self.feature_dim)
-        fourth_root_d = math.sqrt(root_d)
-
-        def taylor_exp(value: torch.Tensor) -> torch.Tensor:
-            quadratic = (value.unsqueeze(-1) * value.unsqueeze(-2)).flatten(start_dim=-2) / math.sqrt(2.0)
-            return torch.cat(
-                [torch.ones_like(value[..., :1]), value / fourth_root_d, quadratic / root_d],
-                dim=-1,
-            )
-
-        query_features = taylor_exp(query)
-        key_features = taylor_exp(key)
+        query_features = self.taylor_exp(query)
+        key_features = self.taylor_exp(key)
         raw = torch.einsum("bhtd,bhsd->bhts", query_features, key_features)[0]
         causal = torch.tril(torch.ones(seq_len, seq_len, device=raw.device, dtype=torch.bool))
         raw = raw.masked_fill(~causal[None], 0.0)
@@ -565,12 +701,13 @@ def run_based(
 ) -> None:
     tokenizer = AutoTokenizer.from_pretrained(args.gpt2_path, local_files_only=True)
     device = torch.device(args.based_device)
-    extractor = BasedLayerOneExtractor(args.based_path, device)
+    layer = int(args.based_layer)
+    extractor = BasedExtractor(args.based_path, device, target_layer=layer)
     heads = evenly_spaced_heads(extractor.num_heads, args.heads_per_model)
-    print(f"Based layer 1 heads={heads} device={device}")
+    print(f"Based layer {layer} heads={heads} device={device}")
 
     for index, window in enumerate(windows, 1):
-        if completed(done_keys, ["based_raw", "based_normalized"], 1, window, heads):
+        if completed(done_keys, ["based_raw", "based_normalized"], layer, window, heads):
             print(f"[Based {index:03d}/{len(windows):03d}] {window.window_id} already complete")
             continue
         encoded, used_length = encode_window(tokenizer, window)
@@ -590,7 +727,7 @@ def run_based(
                 series=series,
                 model_path=args.based_path,
                 matrix_definition=definition,
-                layer=1,
+                layer=layer,
                 window=window,
                 used_token_len=used_length,
             )
@@ -754,6 +891,9 @@ def run_mamba2(
         device_map=args.mamba_device,
         local_files_only=True,
     ).eval()
+    if args.mamba_chunk_size > 0:
+        for block in model.backbone.layers:
+            block.mixer.chunk_size = int(args.mamba_chunk_size)
     layer = int(args.mamba_layer)
     mixer = model.backbone.layers[layer].mixer
     heads = evenly_spaced_heads(mixer.num_heads, args.heads_per_model)
@@ -981,7 +1121,14 @@ def plot_structured_rank_grid(summary: pd.DataFrame, out_dir: Path) -> Path | No
         layer_label = f"layer {layers}" if ", " not in layers else f"layers {layers}"
         model_label = MODEL_LABELS.get(model, model)
         if model == "based":
-            layer_label += "\n(first linear-attention block)"
+            based_layers = sorted(int(layer) for layer in model_frame["layer"].unique())
+            configured_layers = [1, 6, 11, 16, 21]
+            if based_layers == [configured_layers[0]]:
+                layer_label += "\n(first linear-attention block)"
+            elif based_layers == [configured_layers[-1]]:
+                layer_label += "\n(last linear-attention block)"
+            else:
+                layer_label += "\n(global linear-attention block)"
         axes[row_index, 0].text(
             -0.24,
             0.5,
@@ -1058,8 +1205,20 @@ def main() -> None:
     parser.add_argument("--gpt2-path", default=DEFAULT_GPT2_PATH)
     parser.add_argument("--mamba-layer", type=int, default=0)
     parser.add_argument("--retnet-layer", type=int, default=0)
+    parser.add_argument(
+        "--based-layer",
+        type=int,
+        default=1,
+        help="Based global linear-attention layer (one of 1,6,11,16,21).",
+    )
     parser.add_argument("--gpt2-layer", type=int, default=0)
     parser.add_argument("--mamba-device", default="cpu")
+    parser.add_argument(
+        "--mamba-chunk-size",
+        type=int,
+        default=0,
+        help="Override the naive Mamba-2 SSD chunk size to reduce peak memory; 0 keeps the checkpoint default.",
+    )
     parser.add_argument("--retnet-device", default="auto")
     parser.add_argument("--gpt2-device", default="auto")
     parser.add_argument("--based-device", default="cuda" if torch.cuda.is_available() else "cpu")

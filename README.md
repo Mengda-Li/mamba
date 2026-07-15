@@ -20,3 +20,8 @@ The combined Based/Mamba-2/RetNet figure is
 Full checkpoint paths, sampling details, operator definitions, and commands for
 rerunning model inference are documented in
 `attention_rank_comparison_outputs/README.md`.
+
+Final-layer results are in `attention_rank_comparison_last_layer_outputs/`.
+They evaluate Based layer 21 (its last global linear-attention block), Mamba-2
+layer 63, RetNet layer 23, and GPT-2 layer 11. See that directory's `README.md`
+for the full command and memory settings.
