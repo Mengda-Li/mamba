@@ -1,6 +1,8 @@
-"""Compare token-mixing rank proxies across trained sequence models.
+"""Model reconstruction helpers and the original rank-comparison CLI.
 
-The matrices follow the definitions in ``article/draft.tex``:
+The production ICLR 2027 runners import ``BasedExtractor`` and
+``capture_module_input`` from this module. The standalone CLI is retained for
+small diagnostic comparisons of the same token-mixing matrices:
 
 * Mamba-2: ``L * (Q K^T)`` from the SSD representation.
 * RetNet: ``gamma_h ** (i-j) * (Q K^T)`` on the causal triangle.
@@ -45,11 +47,19 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
 
-DEFAULT_MAMBA_PATH = "/225040471/model/Mamba-Codestral-7B-v0.1"
-DEFAULT_RETNET_PATH = "/225040471/model/retnet-1.3B-100B"
-DEFAULT_BASED_PATH = "/225040471/model/based-360m"
-DEFAULT_GPT2_PATH = "/225040471/model/gpt2"
-DEFAULT_DATASET_ROOT = "/225040471/dataset/wikitext"
+MODEL_ROOT = Path(os.environ.get("MODEL_ROOT", "models"))
+DATA_ROOT = Path(os.environ.get("DATA_ROOT", "data"))
+DEFAULT_MAMBA_PATH = os.environ.get(
+    "MAMBA2_MODEL_PATH",
+    str(MODEL_ROOT / "Mamba-Codestral-7B-v0.1"),
+)
+DEFAULT_RETNET_PATH = os.environ.get(
+    "RETNET_MODEL_PATH",
+    str(MODEL_ROOT / "retnet-1.3B-100B"),
+)
+DEFAULT_BASED_PATH = os.environ.get("BASED_MODEL_PATH", str(MODEL_ROOT / "based-360m"))
+DEFAULT_GPT2_PATH = os.environ.get("GPT2_MODEL_PATH", str(MODEL_ROOT / "gpt2"))
+DEFAULT_DATASET_ROOT = os.environ.get("WIKITEXT_ROOT", str(DATA_ROOT / "wikitext"))
 
 SERIES_LABELS = {
     "mamba2_m": "Mamba-2 (SSD)",
@@ -84,7 +94,7 @@ MODEL_LABELS = {
 
 MODEL_ORDER = ["mamba2", "retnet", "based", "gpt2"]
 
-# These are the sequence-length rates proved in article/draft.tex.  The
+# These are the sequence-length rates studied in the accompanying paper. The
 # theorem constants depend on the mask/model parameters and are not known for
 # the trained checkpoints, so the plotted reference curves use unit
 # prefactors.  The Based result is for the raw causal-linear operator, not its
@@ -529,6 +539,8 @@ class BasedExtractor:
                 self.layer_key(self.target_layer, "norm1.weight"),
                 self.layer_key(self.target_layer, "mixer.proj_q.weight"),
                 self.layer_key(self.target_layer, "mixer.proj_k.weight"),
+                self.layer_key(self.target_layer, "mixer.proj_v.weight"),
+                self.layer_key(self.target_layer, "mixer.out_proj.weight"),
             ],
         )
         return keys

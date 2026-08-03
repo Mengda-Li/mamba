@@ -1,0 +1,9 @@
+{
+  "bootstrap_resamples": 2000,
+  "bootstrap_seed": 20270803,
+  "bootstrap_unit": "document",
+  "documents_per_model": 32,
+  "observations": 21504,
+  "validated": true,
+  "within_document_component_aggregation": "median"
+}

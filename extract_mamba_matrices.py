@@ -1,5 +1,7 @@
 import argparse
+import os
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
 
 import torch
@@ -83,7 +85,7 @@ def extract_mamba2_matrices(
       l, qk, m:       [batch, heads, seq_len, seq_len]
       dt, value_dt:   [batch, heads, seq_len]
 
-    `m` is the plan.md matrix L * (Q K^T). `effective_m` additionally
+    `m` is the paper's matrix L * (Q K^T). `effective_m` additionally
     multiplies each source column by dt_j, matching the matrix applied to the
     original pre-discretized value stream in the HF implementation.
     """
@@ -169,7 +171,14 @@ def extract_mamba2_matrices(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Extract Q, K, L, and M from a HF Mamba2 layer.")
-    parser.add_argument("--model-path", default="/225040471/model/Mamba-Codestral-7B-v0.1")
+    model_root = Path(os.environ.get("MODEL_ROOT", "models"))
+    parser.add_argument(
+        "--model-path",
+        default=os.environ.get(
+            "MAMBA2_MODEL_PATH",
+            str(model_root / "Mamba-Codestral-7B-v0.1"),
+        ),
+    )
     parser.add_argument("--prompt", default="Plants create energy through a process known as")
     parser.add_argument("--layer", type=int, default=0)
     parser.add_argument("--device-map", default="auto")

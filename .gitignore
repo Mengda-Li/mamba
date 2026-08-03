@@ -3,10 +3,15 @@
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
+/uv.lock
 
 # Local notebooks and scratch files
 /*.ipynb
 /=1.4.0
+/local_archive/
+/*.pre_*
+/article/
+/plan.md
 
 # Unrelated generated experiment artifacts
 /layer_hist_long_layer0_outputs/
@@ -22,6 +27,8 @@ __pycache__/
 /spectra_outputs/
 /spectra_smoke/
 /wikitext103_raw_val_length_audit.csv
+/experiments_2027/
+/experiments_2027_wikipedia_replication/
 
 # Editor and OS files
 .DS_Store

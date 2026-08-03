@@ -1,0 +1,13 @@
+checkpoint,layer,wp0_reconstruction_passed,documents,heads_or_channels,lengths,native_rank_slope_intervals_available,qk_geometry_available,median_max_r95_fraction,truncation_fidelity_available,sink_diagnostics_available,memory_diagnostics_available,measured_mask_gain_available
+gpt2,0,True,32,12,7,True,True,0.5625,True,True,False,False
+gpt2,5,True,32,12,7,True,True,0.5625,True,True,False,False
+gpt2,11,True,32,12,7,True,True,0.59375,True,True,False,False
+based,1,True,32,16,7,True,True,0.31640625,True,False,False,False
+based,11,True,32,16,7,True,True,0.2490842490842491,True,False,False,False
+based,21,True,32,16,7,True,True,0.1611721611721611,True,False,False,False
+mamba2,0,True,32,8,7,True,True,0.140625,True,False,True,True
+mamba2,31,True,32,8,7,True,True,0.3984375,True,False,True,True
+mamba2,63,True,32,8,7,True,True,0.34375,True,False,True,True
+retnet,0,True,32,8,7,True,True,0.37109375,True,False,True,True
+retnet,11,True,32,8,7,True,True,0.53515625,True,False,True,True
+retnet,23,True,32,8,7,True,True,0.37109375,True,False,True,True

@@ -1,0 +1,5 @@
+checkpoint,passed,median_relative_error,maximum_relative_error,maximum_fp32_reference_error,bf16_tolerance_used,included_operations,excluded_operations
+based,True,2.211276495245329e-07,3.044083882741689e-07,3.044083882741689e-07,False,"Taylor feature map, causal support, epsilon=1e-12 row normalization, value mixing, out_proj",residual addition and subsequent normalization
+gpt2,True,0.0,0.0,0.0,False,"causal mask, 1/sqrt(d_h), softmax, value mixing, c_proj","residual addition, subsequent normalization; dropout disabled by eval()"
+mamba2,True,7.101888854776918e-08,1.9141501184094525e-07,1.9141501184094525e-07,False,"input-dependent A/B/C, dt discretization, transition products, value mixing, D feedthrough","gated RMS normalization, out_proj, residual addition"
+retnet,True,0.0016569030703976,0.0017897498328238,8.70957777010517e-08,True,"rotary Q/K, 1/sqrt(d_h), learned head decay, causal mask, value mixing","RMS normalization, output gate, o_proj, residual addition"
