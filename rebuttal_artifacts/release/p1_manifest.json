@@ -1,0 +1,25 @@
+{
+  "compact_plotting_rows_sha256": "f5c695952b3a05d6e1560cb9d07dddeb981486669f2f3eb9e4d03343bc15ae07",
+  "files": {
+    "p1_functional_loss_spectrum.caption.md": "769dde9d8daadf9c8e856ec158aca94c0e428cf0e1e9c168a83f285c1d2d0b72",
+    "p1_functional_loss_spectrum.pdf": "86161096b6d1e643edc21910d9fd29fa4160780ef5644b960cf11c7d3ea1c4e2",
+    "p1_functional_loss_spectrum.svg": "aab46ac5a85bee151e3db7387f45773834992fd1731bcacb99d6629ae749c113"
+  },
+  "layout_revision": "Shared context xlabel; redundant footer removed. Functional plotting estimates and intervals unchanged.",
+  "n_documents_range": [
+    32
+  ],
+  "n_selected_plotting_rows": 36,
+  "parent_compact_plotting_rows_sha256": "957c5fd2bedc0c2e65ac26f20d0ecad43fd2e761606660e63e2b28892f11e6ff",
+  "producer_script_sha256": "43eb39d0a647dec873cc83be3000f6cb7168b3d549722bb4d7e241837e576318",
+  "replot_script_sha256": "24e3b78513f8fe2636035fed477d05f1b3a322d27ede74831fb3970e1fe8289c",
+  "schema_version": 2,
+  "scope": "Retained GPT-2 functional figure only; publication selection from completed corrected results",
+  "selection": "rows with a functional intervention; all36 retained unchanged",
+  "source_configurations": [
+    [
+      "gpt2",
+      "bcc1a448a8af5d402d9e"
+    ]
+  ]
+}

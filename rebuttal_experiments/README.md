@@ -5,8 +5,13 @@ experiment repository through `repo_paths.py`, so a standalone GitHub clone
 works without the paper's directory layout. Run commands from repository root.
 Checkpoints, datasets and frozen manifests are explicit local inputs.
 
+The current publication retains the GPT-2 functional figure and the audited
+frame-geometry figures. Completed full/cross-cut and frozen-factor figure sets
+were withdrawn from the manuscript; their vectors and aggregate plotting rows
+are excluded from `rebuttal_artifacts/release/`. Generic runners and historical
+source remain available without redefining the current publication inventory.
+
 ```bash
-python rebuttal_experiments/run_crosscut.py --self-test
 python -m unittest discover -s rebuttal_experiments -p test_gpt2_functional.py -v
 python rebuttal_experiments/analyze_rebuttal.py self-test
 ```
@@ -23,8 +28,9 @@ absolute-threshold claims need FP64 formation or a factorized check.
 Use new output directories for corrected runs. Source hashes and schema2
 separate them from historical results. Functional loss/ablation logic is
 unchanged; its associated spectra use the corrected solver/energy checks.
-The data in the local plotting bundle may still describe the earlier run;
-read its manifest before using numbers and rebuild after corrected aggregation.
+Historical local plotting bundles are separate from the current publication;
+read their manifests before using any archived numbers. Retained figure inputs
+and replot commands are documented in `rebuttal_artifacts/release/README.md`.
 
 Example explicit queue generation (does not launch jobs):
 

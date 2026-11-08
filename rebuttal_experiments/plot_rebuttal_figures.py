@@ -108,13 +108,11 @@ def main():
         if col == 0:
             ax.set_ylabel("Full mixer stable rank")
             ax.legend(frameon=False, fontsize=6.2)
-        ax.set_xlabel("Context tokens")
     fig.suptitle("GPT-2: separately applied single-head interventions", y=.994, fontsize=9)
-    fig.text(.5, .009, "32 paired documents; head mean within document; shading: 95% document bootstrap.",
-        ha="center", fontsize=6.6)
-    fig.subplots_adjust(left=.11, right=.985, top=.91, bottom=.115, hspace=.43, wspace=.37)
+    fig.supxlabel("Context tokens", y=.025, fontsize=8)
+    fig.subplots_adjust(left=.11, right=.985, top=.91, bottom=.145, hspace=.43, wspace=.37)
     save(fig, "p1_functional_loss_spectrum",
-        "GPT-2 single-head functional interventions and corrected operator spectra. Each head is intervened on separately through the full native forward pass; means first average heads within each document, then average the same 32 documents. Top: paired change in next-token NLL, with positive values indicating worse prediction. Layer-0 neutralization intervals cross zero at all three lengths; its small curve is compressed by the larger ablation scale. Bottom: the targeted head's full-mixer stable rank before and after causal sink neutralization; ablation is omitted from the rank panel because its operator is zero. Shading preserves 2000-resample document-bootstrap 95% intervals. Rank changes and loss effects are distinct measurements; these results do not establish a rank-only causal effect on task loss.")
+        "GPT-2 single-head functional interventions and corrected operator spectra. Each head is intervened on separately through the full native forward pass; means first average heads within each document, then average the same 32 documents. These layer summaries use head means; manuscript Figure 1 reports head medians. Top: paired change in next-token NLL, with positive values indicating worse prediction. Layer-0 neutralization intervals cross zero at all three lengths; its small curve is compressed by the larger ablation scale. Bottom: the targeted head's full-mixer stable rank before and after causal sink neutralization; ablation is omitted from the rank panel because its operator is zero. Shading preserves 2000-resample document-bootstrap 95% intervals. Rank changes and loss effects are distinct measurements; these results do not establish a rank-only causal effect on task loss.")
 
     fig, axes = plt.subplots(2, 3, figsize=(6.6, 4.75))
     for ax, (model, title) in zip(axes.flat, MODELS):

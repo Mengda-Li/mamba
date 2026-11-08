@@ -1,0 +1,14 @@
+{
+  "files": {
+    "p1_functional_loss_spectrum.pdf": "86161096b6d1e643edc21910d9fd29fa4160780ef5644b960cf11c7d3ea1c4e2",
+    "p1_functional_loss_spectrum.svg": "aab46ac5a85bee151e3db7387f45773834992fd1731bcacb99d6629ae749c113"
+  },
+  "local_preview_hashes_not_published": {
+    "p1_functional_loss_spectrum.png": "6dac4e25c5450eed39841d169348dee503ba2015e515b7aca42cea285bba59cb"
+  },
+  "n_selected_plotting_rows": 36,
+  "publication_selection": "PDF/SVG only; local PNG hash retained for provenance",
+  "scope": "retained GPT-2 functional figure only; saved estimates/CIs, no rebootstrap",
+  "script_sha256": "24e3b78513f8fe2636035fed477d05f1b3a322d27ede74831fb3970e1fe8289c",
+  "source_plotting_rows_sha256": "f5c695952b3a05d6e1560cb9d07dddeb981486669f2f3eb9e4d03343bc15ae07"
+}

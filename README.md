@@ -32,8 +32,11 @@ The former also retains the original small comparison CLI for diagnostics.
 ## Rebuttal additions and portable artifacts
 
 The supplemental sources in [`rebuttal_experiments/`](rebuttal_experiments/README.md)
-run from this standalone repository. They include full/cross-cut spectra,
-GPT-2 value-path interventions, position/decay controls and trained-frame diagnostics.
+run from this standalone repository. The current rebuttal publication retains
+GPT-2 value-path interventions and trained-frame diagnostics. The completed
+full/cross-cut comparison and frozen-factor control figures were withdrawn;
+their plotting data and vectors are excluded from the current release.
+Historical analysis utilities and results remain preserved separately.
 
 The audited vector figures, compact inputs and replot commands are in
 [`rebuttal_artifacts/release/`](rebuttal_artifacts/release/README.md).
@@ -187,8 +190,8 @@ effects, and `wikipedia_replication.pdf`.
 
 ## Artifact policy
 
-`paper_artifacts/figures/` contains exactly the seven PDFs included by the
-manuscript. `paper_artifacts/tables/` and `paper_artifacts/wikipedia/` contain
+`paper_artifacts/figures/` contains the seven PDFs from the original experiment
+package. `paper_artifacts/tables/` and `paper_artifacts/wikipedia/` contain
 compact summaries used for the reported numbers. Full head-resolved metrics,
 model checkpoints, downloaded datasets, logs, spectra, and temporary shards
 remain outside Git because they are large and contain local paths.

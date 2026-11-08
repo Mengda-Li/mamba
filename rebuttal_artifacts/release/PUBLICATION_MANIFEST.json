@@ -1,317 +1,511 @@
 {
-  "version": "audited_rebuttal_release",
+  "code_archive": {
+    "entries": [
+      {
+        "bytes": 53689,
+        "path": "compare_attention_ranks_wikitext.py",
+        "sha256": "537373034ee22074831d4c47be6122ff50fb125a6c31020bb263e2c2dbe49b08"
+      },
+      {
+        "bytes": 22602,
+        "path": "experiment_common.py",
+        "sha256": "5293800ea627a6ea0c40e7dc4f14df0df2146b92445bd57043a9d3e7c97113c7"
+      },
+      {
+        "bytes": 7363,
+        "path": "extract_mamba_matrices.py",
+        "sha256": "48ea60266fc241c98b64191b125b5b3a3cf1c24745e682ae13c5948c00219213"
+      },
+      {
+        "bytes": 66252,
+        "path": "gpt2_experiments.py",
+        "sha256": "8a5f7bc398a5f4ab341366279dc2b2b7f8d2cffccf83ce84d3fb2b1a0415d302"
+      },
+      {
+        "bytes": 846,
+        "path": "pyproject.toml",
+        "sha256": "4b8290b4b998d224ccaa1d374bde3e90caacfdeeb0877990a254f0328558821b"
+      },
+      {
+        "bytes": 3565,
+        "path": "rebuttal_experiments/FRAME_GEOMETRY_README.md",
+        "sha256": "53e0bf1ae20144acf21461363cdca34ae90fb0de944761fc8f56580014aab7eb"
+      },
+      {
+        "bytes": 3417,
+        "path": "rebuttal_experiments/README.md",
+        "sha256": "7ba5bd247ade3d38edd8dda9d85eb5eabd94c81aa481f9fe10140506b4b4def1"
+      },
+      {
+        "bytes": 223,
+        "path": "rebuttal_experiments/__init__.py",
+        "sha256": "f78216a2c1b99602bea51b860cba6466fe0d99b0ccd2e2c21c41c2ee694f8959"
+      },
+      {
+        "bytes": 15090,
+        "path": "rebuttal_experiments/analyze_frame_geometry.py",
+        "sha256": "bd2c1169aac381e55166e3c5c886f969022b5b0bfc4c4c0addd7b5d76655ac28"
+      },
+      {
+        "bytes": 40321,
+        "path": "rebuttal_experiments/analyze_rebuttal.py",
+        "sha256": "63d1c9b96bb29ea217261e0f413984d666152a7371abda9260e42bbf72e5ea58"
+      },
+      {
+        "bytes": 8654,
+        "path": "rebuttal_experiments/audit_full_svd_completion.py",
+        "sha256": "7c2cf40f1a88f2a85d5071bb5e726d1b43002094bc78100b4090d6518bc36d68"
+      },
+      {
+        "bytes": 12102,
+        "path": "rebuttal_experiments/build_local_bundle.py",
+        "sha256": "d0bc96e8c189c5e6991c0603d332e5c974c67b4f28c27aa5bb63bd0495782616"
+      },
+      {
+        "bytes": 16058,
+        "path": "rebuttal_experiments/check_spectral_precision.py",
+        "sha256": "d99cd84528193983513a95f5629ddfcabf822122cdb286d680c1c66bd331d94a"
+      },
+      {
+        "bytes": 4607,
+        "path": "rebuttal_experiments/create_heatmaps.py",
+        "sha256": "37308ec08435bc67dcc4255ab736bfe4aabf5b4697d51100940cd99f4e8fbc1d"
+      },
+      {
+        "bytes": 1818,
+        "path": "rebuttal_experiments/download_controls.py",
+        "sha256": "62cc655f37e7444f96ef38e373c8bb426eabee3f54f55f65f6a2e90d4355c5f7"
+      },
+      {
+        "bytes": 3778,
+        "path": "rebuttal_experiments/make_job_plan.py",
+        "sha256": "07222712367156ff2e0584bea438a964b883a06a82063561af1b6bf0367e36df"
+      },
+      {
+        "bytes": 11355,
+        "path": "rebuttal_experiments/mamba_memory_patch.py",
+        "sha256": "589cc652f3978e4712b0be49f8aedee6bd441e2d7be843c7b082eba83ea3d148"
+      },
+      {
+        "bytes": 12996,
+        "path": "rebuttal_experiments/mamba_memory_patch_exact.py",
+        "sha256": "d9f021a5cbd82a74f47aeacba7743922d47203a1f5241834da3a8ea8b4f43727"
+      },
+      {
+        "bytes": 11589,
+        "path": "rebuttal_experiments/plot_audited_geometry.py",
+        "sha256": "314c38adfccf8ec8b0000e58a92f513cbd87cb8a9178795e66eddc0cbf39185d"
+      },
+      {
+        "bytes": 7266,
+        "path": "rebuttal_experiments/plot_frame_geometry.py",
+        "sha256": "4ad1204ba3e84c131f5009c6ece5aa7c6d58579edcd75b6407a0e54bbcedecb5"
+      },
+      {
+        "bytes": 8582,
+        "path": "rebuttal_experiments/plot_frame_publication.py",
+        "sha256": "2c34299613b29dc314c89f711f853733b3490567d4d44d3352eebd473444e4f4"
+      },
+      {
+        "bytes": 8540,
+        "path": "rebuttal_experiments/plot_local_bundle.py",
+        "sha256": "f7c3eef53a2d016262cb34e2bdb2bdd117698c6c70fd56551c0a6add481986e0"
+      },
+      {
+        "bytes": 12568,
+        "path": "rebuttal_experiments/plot_rebuttal_figures.py",
+        "sha256": "43eb39d0a647dec873cc83be3000f6cb7168b3d549722bb4d7e241837e576318"
+      },
+      {
+        "bytes": 22762,
+        "path": "rebuttal_experiments/prepare_mamba13_hf.py",
+        "sha256": "e4ae541da95ac4726c5c16e57dedac6abdcc06a8bcd082926c3a31bc1a048239"
+      },
+      {
+        "bytes": 4077,
+        "path": "rebuttal_experiments/prepare_manifest.py",
+        "sha256": "297181cfe2c7f4c6f5b86a3b52ba9093bde44f4f9c79bad2f5448a8505b808f9"
+      },
+      {
+        "bytes": 274,
+        "path": "rebuttal_experiments/repo_paths.py",
+        "sha256": "6f6c816653a79bc95d65f0cff796b72a98e5a344fc46679bae872d1df665daed"
+      },
+      {
+        "bytes": 33635,
+        "path": "rebuttal_experiments/run_crosscut.py",
+        "sha256": "213990d1f403808a118d41283552d02c40f11ade6a7844ab40eb74e2cd42c169"
+      },
+      {
+        "bytes": 29419,
+        "path": "rebuttal_experiments/run_frame_geometry.py",
+        "sha256": "51cfbdb3870898ff19b3a480478b5c17c82f35b60cbf3e646d6819d02ceca5cd"
+      },
+      {
+        "bytes": 27616,
+        "path": "rebuttal_experiments/run_gpt2_functional.py",
+        "sha256": "3aac299e3212da6597d8236cd9e1ff3a3642231631fe9dc7396332591c53d738"
+      },
+      {
+        "bytes": 2192,
+        "path": "rebuttal_experiments/run_mamba13_crosscut.py",
+        "sha256": "0b7e9b6051ded8abcaa82413655cab386e182d6b0dd9d5fee1a342ccafdc154b"
+      },
+      {
+        "bytes": 1557,
+        "path": "rebuttal_experiments/run_mamba13_crosscut_scaled.py",
+        "sha256": "819e4356efc5ff342e02311f958439426c1b4f30d9f5e12ca044b3fdbf94b48e"
+      },
+      {
+        "bytes": 716,
+        "path": "rebuttal_experiments/run_mamba_crosscut_bounded.py",
+        "sha256": "4d92583c8e3795a4b8ec68ddbd2f5ae6a472711f2eac0abdd6a50a3bc38be6ce"
+      },
+      {
+        "bytes": 2304,
+        "path": "rebuttal_experiments/spectral_qc.py",
+        "sha256": "f13d2c43f3178130d468296d19d302716bc7546f6ba86106307db5b53c97079e"
+      },
+      {
+        "bytes": 3575,
+        "path": "rebuttal_experiments/spectral_qc_scaled.py",
+        "sha256": "9a9da7b737465c2981598539242b9c51bfdc371f63726df77cb72fff637e2e2a"
+      },
+      {
+        "bytes": 3694,
+        "path": "rebuttal_experiments/supervise.py",
+        "sha256": "94199f042cd818db7a590d629423732a6ce5de1bf4a81fcd3439d8af3efbf7ad"
+      },
+      {
+        "bytes": 5171,
+        "path": "rebuttal_experiments/test_gpt2_functional.py",
+        "sha256": "f1f0e1971298c7c7d903c8735b93bdd63d343b3b28569951a1d06f00943dc638"
+      },
+      {
+        "bytes": 2999,
+        "path": "rebuttal_experiments/validate_mamba_patch.py",
+        "sha256": "a05418f620441a521071a6ed32147a687ea7911294613a96487a3f3aad3df528"
+      }
+    ],
+    "path": "rebuttal_artifacts/release/publication_code.zip",
+    "sha256": "b52eec3210eb4780a902cd4c9d4a4c7e086a8d375a21a9f7ae97bfd4ee27158a"
+  },
   "files": [
     {
-      "path": ".gitignore",
       "bytes": 1292,
+      "path": ".gitignore",
       "sha256": "a0f776b6479eef533e506c70b005d2c3f3b78d2f943b990349e0ba27563af26a"
     },
     {
+      "bytes": 7960,
       "path": "README.md",
-      "bytes": 7747,
-      "sha256": "bfeac7379eb46fc2e8b0b587dcf2707dcb1b064e705901a071e790145b1a86cd"
+      "sha256": "c123d7e928446deb5c031f3255f2d7d0758cbbed7226917fe2d68c416533c6b1"
     },
     {
-      "path": "compare_attention_ranks_wikitext.py",
       "bytes": 53689,
+      "path": "compare_attention_ranks_wikitext.py",
       "sha256": "537373034ee22074831d4c47be6122ff50fb125a6c31020bb263e2c2dbe49b08"
     },
     {
-      "path": "experiment_common.py",
       "bytes": 22602,
+      "path": "experiment_common.py",
       "sha256": "5293800ea627a6ea0c40e7dc4f14df0df2146b92445bd57043a9d3e7c97113c7"
     },
     {
-      "path": "extract_mamba_matrices.py",
       "bytes": 7363,
+      "path": "extract_mamba_matrices.py",
       "sha256": "48ea60266fc241c98b64191b125b5b3a3cf1c24745e682ae13c5948c00219213"
     },
     {
-      "path": "gpt2_experiments.py",
       "bytes": 66252,
+      "path": "gpt2_experiments.py",
       "sha256": "8a5f7bc398a5f4ab341366279dc2b2b7f8d2cffccf83ce84d3fb2b1a0415d302"
     },
     {
-      "path": "pyproject.toml",
       "bytes": 846,
+      "path": "pyproject.toml",
       "sha256": "4b8290b4b998d224ccaa1d374bde3e90caacfdeeb0877990a254f0328558821b"
     },
     {
+      "bytes": 3072,
       "path": "rebuttal_artifacts/release/README.md",
-      "bytes": 3221,
-      "sha256": "92ee884d6be76b9c333b8d200c4b1e78c21985d8ec7393468722cbf833bfc1ee"
+      "sha256": "8b5f0fc499af7dd81b405c879f61fded7f84e18fbb0339122977c68e85627a66"
     },
     {
+      "bytes": 1006,
       "path": "rebuttal_artifacts/release/REVISED_FIGURES.md",
-      "bytes": 1082,
-      "sha256": "15ac0ff2618b40ccb257ab5e5aae028cb880fe7ae652c65e3811066252d86ce0"
+      "sha256": "447cc2ebba39c751c0c0943b697e799863b7e7eef52c1f84f3095c6e389ca649"
     },
     {
-      "path": "rebuttal_artifacts/release/audited_geometry/active_frame_audit.caption.md",
       "bytes": 1410,
+      "path": "rebuttal_artifacts/release/audited_geometry/active_frame_audit.caption.md",
       "sha256": "2e39052b15cb444c6323f86e1948ab6898cf72b308484c749863ab26775172a7"
     },
     {
-      "path": "rebuttal_artifacts/release/audited_geometry/active_frame_audit.pdf",
       "bytes": 18910,
+      "path": "rebuttal_artifacts/release/audited_geometry/active_frame_audit.pdf",
       "sha256": "37f8dca7180f200312af3abc52a472f6fae3758b1f43ecf462e1b47b1454e30f"
     },
     {
-      "path": "rebuttal_artifacts/release/audited_geometry/active_frame_audit.svg",
       "bytes": 41967,
+      "path": "rebuttal_artifacts/release/audited_geometry/active_frame_audit.svg",
       "sha256": "12d4447722182e1087e6040e9f2f1da53600ea760a8fe1ad145c5232d00db37d"
     },
     {
-      "path": "rebuttal_artifacts/release/audited_geometry/audited_geometry_manifest.json",
       "bytes": 1936,
+      "path": "rebuttal_artifacts/release/audited_geometry/audited_geometry_manifest.json",
       "sha256": "f0c522c2e787aa7a1d7bd634037a3a9a20d017f5ec576ef886ad4e10f6d0f6ba"
     },
     {
-      "path": "rebuttal_artifacts/release/audited_geometry/audited_geometry_plotting_rows.csv.gz",
       "bytes": 6344,
+      "path": "rebuttal_artifacts/release/audited_geometry/audited_geometry_plotting_rows.csv.gz",
       "sha256": "b1e0b7dd7b1c58bf80dd12c843f03161f7c0e171c8beaa83e730e66ce7c81c32"
     },
     {
-      "path": "rebuttal_artifacts/release/audited_geometry/input_frame_angles.caption.md",
       "bytes": 1109,
+      "path": "rebuttal_artifacts/release/audited_geometry/input_frame_angles.caption.md",
       "sha256": "56d55961589e01301ad90cc25fd45676f350018c72dbb99bf921561b4a55f57f"
     },
     {
-      "path": "rebuttal_artifacts/release/audited_geometry/input_frame_angles.pdf",
       "bytes": 23705,
+      "path": "rebuttal_artifacts/release/audited_geometry/input_frame_angles.pdf",
       "sha256": "8f4602edf6c5c5cc861aabcb41c3db585d706214f0456a7d4a219d7c00cea29e"
     },
     {
-      "path": "rebuttal_artifacts/release/audited_geometry/input_frame_angles.svg",
       "bytes": 50892,
+      "path": "rebuttal_artifacts/release/audited_geometry/input_frame_angles.svg",
       "sha256": "e552fa10a99cdda302253902bba1bbd1eebaec12dcc073a33724ac04cdc293b3"
     },
     {
-      "path": "rebuttal_artifacts/release/checkpoint_labels.json",
-      "bytes": 243,
-      "sha256": "61761d3de195c34129b8d3dc91488260ce6aa9cbfdb18129a5b654a0a6d7842c"
-    },
-    {
+      "bytes": 889,
       "path": "rebuttal_artifacts/release/p1_functional_loss_spectrum.caption.md",
-      "bytes": 809,
-      "sha256": "a05b635b68133a8f83b880ebb1474e89bd7fd3916e23768576002d31e479d6a5"
+      "sha256": "769dde9d8daadf9c8e856ec158aca94c0e428cf0e1e9c168a83f285c1d2d0b72"
     },
     {
+      "bytes": 20654,
       "path": "rebuttal_artifacts/release/p1_functional_loss_spectrum.pdf",
-      "bytes": 21450,
-      "sha256": "0c863e3efdb824e535b8df99aedfd4e358383652cfaf5849f571b97751d40bfa"
+      "sha256": "86161096b6d1e643edc21910d9fd29fa4160780ef5644b960cf11c7d3ea1c4e2"
     },
     {
+      "bytes": 63777,
       "path": "rebuttal_artifacts/release/p1_functional_loss_spectrum.svg",
-      "bytes": 65131,
-      "sha256": "033734372e3c2e5e7a73a83782b8c219c4a5bf8d9d18fed26229f60a2c9c62f6"
+      "sha256": "aab46ac5a85bee151e3db7387f45773834992fd1731bcacb99d6629ae749c113"
     },
     {
-      "path": "rebuttal_artifacts/release/p1_p2_manifest.json",
-      "bytes": 2218,
-      "sha256": "0dbf684f5a904fce2ef639d14317241540102295053884ceb4f88e94108b12a4"
+      "bytes": 1248,
+      "path": "rebuttal_artifacts/release/p1_manifest.json",
+      "sha256": "37a702732f2e79246761c3a81aa86196e50b114bfba6c25e7a20447ee3bca444"
     },
     {
-      "path": "rebuttal_artifacts/release/p1_p2_plotting_rows.csv.gz",
-      "bytes": 5816,
-      "sha256": "957c5fd2bedc0c2e65ac26f20d0ecad43fd2e761606660e63e2b28892f11e6ff"
+      "bytes": 1716,
+      "path": "rebuttal_artifacts/release/p1_plotting_rows.csv.gz",
+      "sha256": "f5c695952b3a05d6e1560cb9d07dddeb981486669f2f3eb9e4d03343bc15ae07"
     },
     {
-      "path": "rebuttal_artifacts/release/p2_frozen_factor_controls.caption.md",
-      "bytes": 1188,
-      "sha256": "8be7daf9148c04b069173300b16c45c2c025b5bf9095b4cb2dcd34176b84ae21"
+      "bytes": 781,
+      "path": "rebuttal_artifacts/release/p1_replot_manifest.json",
+      "sha256": "6ba4ce046d551865dcb72607c08cedced5a849d92d5f3e1db23094a7fb920d15"
     },
     {
-      "path": "rebuttal_artifacts/release/p2_frozen_factor_controls.pdf",
-      "bytes": 27831,
-      "sha256": "2c34d1db9abf5329b77aec9236872e4cb34b5334e72bbbfec2f97f8602bcf66a"
+      "bytes": 5703,
+      "path": "rebuttal_artifacts/release/plot_p1_release.py",
+      "sha256": "24e3b78513f8fe2636035fed477d05f1b3a322d27ede74831fb3970e1fe8289c"
     },
     {
-      "path": "rebuttal_artifacts/release/p2_frozen_factor_controls.svg",
-      "bytes": 97418,
-      "sha256": "964a25635c5b5d5d8d68120589c3898f30e91dcb7c983c8920fbd6113b031d19"
-    },
-    {
-      "path": "rebuttal_artifacts/release/p2_native_full_crosscut_srank.caption.md",
-      "bytes": 935,
-      "sha256": "038b1d798cbc9a341397edbe2d7882a53368b5a1fef5027b1eba7fa0a4095165"
-    },
-    {
-      "path": "rebuttal_artifacts/release/p2_native_full_crosscut_srank.pdf",
-      "bytes": 22801,
-      "sha256": "1e43fb6baa00847be98a6cce38a51e8199590aaa0d0d4812645a72a17d603a5b"
-    },
-    {
-      "path": "rebuttal_artifacts/release/p2_native_full_crosscut_srank.svg",
-      "bytes": 72834,
-      "sha256": "6947ca0bf8f1c258df6f512d5a65eaa7c30f2cd79edcf44e3410694390be2ea0"
-    },
-    {
+      "bytes": 151788,
       "path": "rebuttal_artifacts/release/publication_code.zip",
-      "bytes": 151166,
-      "sha256": "d7ba4156622bc3b82fd8051b8dff0afe63c0288a2c48d4058d7c77cb4ccea151"
+      "sha256": "b52eec3210eb4780a902cd4c9d4a4c7e086a8d375a21a9f7ae97bfd4ee27158a"
     },
     {
-      "path": "rebuttal_experiments/FRAME_GEOMETRY_README.md",
       "bytes": 3565,
+      "path": "rebuttal_experiments/FRAME_GEOMETRY_README.md",
       "sha256": "53e0bf1ae20144acf21461363cdca34ae90fb0de944761fc8f56580014aab7eb"
     },
     {
+      "bytes": 3417,
       "path": "rebuttal_experiments/README.md",
-      "bytes": 3001,
-      "sha256": "1315433c5f9d2bf70aaff364818b0f9ec50aaa05b41c540fbda58626df95ed26"
+      "sha256": "7ba5bd247ade3d38edd8dda9d85eb5eabd94c81aa481f9fe10140506b4b4def1"
     },
     {
-      "path": "rebuttal_experiments/__init__.py",
       "bytes": 223,
+      "path": "rebuttal_experiments/__init__.py",
       "sha256": "f78216a2c1b99602bea51b860cba6466fe0d99b0ccd2e2c21c41c2ee694f8959"
     },
     {
-      "path": "rebuttal_experiments/analyze_frame_geometry.py",
       "bytes": 15090,
+      "path": "rebuttal_experiments/analyze_frame_geometry.py",
       "sha256": "bd2c1169aac381e55166e3c5c886f969022b5b0bfc4c4c0addd7b5d76655ac28"
     },
     {
-      "path": "rebuttal_experiments/analyze_rebuttal.py",
       "bytes": 40321,
+      "path": "rebuttal_experiments/analyze_rebuttal.py",
       "sha256": "63d1c9b96bb29ea217261e0f413984d666152a7371abda9260e42bbf72e5ea58"
     },
     {
-      "path": "rebuttal_experiments/audit_full_svd_completion.py",
       "bytes": 8654,
+      "path": "rebuttal_experiments/audit_full_svd_completion.py",
       "sha256": "7c2cf40f1a88f2a85d5071bb5e726d1b43002094bc78100b4090d6518bc36d68"
     },
     {
-      "path": "rebuttal_experiments/build_local_bundle.py",
       "bytes": 12102,
+      "path": "rebuttal_experiments/build_local_bundle.py",
       "sha256": "d0bc96e8c189c5e6991c0603d332e5c974c67b4f28c27aa5bb63bd0495782616"
     },
     {
-      "path": "rebuttal_experiments/check_spectral_precision.py",
       "bytes": 16058,
+      "path": "rebuttal_experiments/check_spectral_precision.py",
       "sha256": "d99cd84528193983513a95f5629ddfcabf822122cdb286d680c1c66bd331d94a"
     },
     {
-      "path": "rebuttal_experiments/create_heatmaps.py",
       "bytes": 4607,
+      "path": "rebuttal_experiments/create_heatmaps.py",
       "sha256": "37308ec08435bc67dcc4255ab736bfe4aabf5b4697d51100940cd99f4e8fbc1d"
     },
     {
-      "path": "rebuttal_experiments/download_controls.py",
       "bytes": 1818,
+      "path": "rebuttal_experiments/download_controls.py",
       "sha256": "62cc655f37e7444f96ef38e373c8bb426eabee3f54f55f65f6a2e90d4355c5f7"
     },
     {
-      "path": "rebuttal_experiments/make_job_plan.py",
       "bytes": 3778,
+      "path": "rebuttal_experiments/make_job_plan.py",
       "sha256": "07222712367156ff2e0584bea438a964b883a06a82063561af1b6bf0367e36df"
     },
     {
-      "path": "rebuttal_experiments/mamba_memory_patch.py",
       "bytes": 11355,
+      "path": "rebuttal_experiments/mamba_memory_patch.py",
       "sha256": "589cc652f3978e4712b0be49f8aedee6bd441e2d7be843c7b082eba83ea3d148"
     },
     {
-      "path": "rebuttal_experiments/mamba_memory_patch_exact.py",
       "bytes": 12996,
+      "path": "rebuttal_experiments/mamba_memory_patch_exact.py",
       "sha256": "d9f021a5cbd82a74f47aeacba7743922d47203a1f5241834da3a8ea8b4f43727"
     },
     {
-      "path": "rebuttal_experiments/plot_audited_geometry.py",
       "bytes": 11589,
+      "path": "rebuttal_experiments/plot_audited_geometry.py",
       "sha256": "314c38adfccf8ec8b0000e58a92f513cbd87cb8a9178795e66eddc0cbf39185d"
     },
     {
-      "path": "rebuttal_experiments/plot_frame_geometry.py",
       "bytes": 7266,
+      "path": "rebuttal_experiments/plot_frame_geometry.py",
       "sha256": "4ad1204ba3e84c131f5009c6ece5aa7c6d58579edcd75b6407a0e54bbcedecb5"
     },
     {
-      "path": "rebuttal_experiments/plot_frame_publication.py",
       "bytes": 8582,
+      "path": "rebuttal_experiments/plot_frame_publication.py",
       "sha256": "2c34299613b29dc314c89f711f853733b3490567d4d44d3352eebd473444e4f4"
     },
     {
-      "path": "rebuttal_experiments/plot_local_bundle.py",
       "bytes": 8540,
+      "path": "rebuttal_experiments/plot_local_bundle.py",
       "sha256": "f7c3eef53a2d016262cb34e2bdb2bdd117698c6c70fd56551c0a6add481986e0"
     },
     {
+      "bytes": 12568,
       "path": "rebuttal_experiments/plot_rebuttal_figures.py",
-      "bytes": 12614,
-      "sha256": "539f0ed243c900093605eee711af0c2f57f0442fab378b86dfe5f94f427ec214"
+      "sha256": "43eb39d0a647dec873cc83be3000f6cb7168b3d549722bb4d7e241837e576318"
     },
     {
-      "path": "rebuttal_experiments/prepare_mamba13_hf.py",
       "bytes": 22762,
+      "path": "rebuttal_experiments/prepare_mamba13_hf.py",
       "sha256": "e4ae541da95ac4726c5c16e57dedac6abdcc06a8bcd082926c3a31bc1a048239"
     },
     {
-      "path": "rebuttal_experiments/prepare_manifest.py",
       "bytes": 4077,
+      "path": "rebuttal_experiments/prepare_manifest.py",
       "sha256": "297181cfe2c7f4c6f5b86a3b52ba9093bde44f4f9c79bad2f5448a8505b808f9"
     },
     {
-      "path": "rebuttal_experiments/repo_paths.py",
       "bytes": 274,
+      "path": "rebuttal_experiments/repo_paths.py",
       "sha256": "6f6c816653a79bc95d65f0cff796b72a98e5a344fc46679bae872d1df665daed"
     },
     {
-      "path": "rebuttal_experiments/run_crosscut.py",
       "bytes": 33635,
+      "path": "rebuttal_experiments/run_crosscut.py",
       "sha256": "213990d1f403808a118d41283552d02c40f11ade6a7844ab40eb74e2cd42c169"
     },
     {
-      "path": "rebuttal_experiments/run_frame_geometry.py",
       "bytes": 29419,
+      "path": "rebuttal_experiments/run_frame_geometry.py",
       "sha256": "51cfbdb3870898ff19b3a480478b5c17c82f35b60cbf3e646d6819d02ceca5cd"
     },
     {
-      "path": "rebuttal_experiments/run_gpt2_functional.py",
       "bytes": 27616,
+      "path": "rebuttal_experiments/run_gpt2_functional.py",
       "sha256": "3aac299e3212da6597d8236cd9e1ff3a3642231631fe9dc7396332591c53d738"
     },
     {
-      "path": "rebuttal_experiments/run_mamba13_crosscut.py",
       "bytes": 2192,
+      "path": "rebuttal_experiments/run_mamba13_crosscut.py",
       "sha256": "0b7e9b6051ded8abcaa82413655cab386e182d6b0dd9d5fee1a342ccafdc154b"
     },
     {
-      "path": "rebuttal_experiments/run_mamba13_crosscut_scaled.py",
       "bytes": 1557,
+      "path": "rebuttal_experiments/run_mamba13_crosscut_scaled.py",
       "sha256": "819e4356efc5ff342e02311f958439426c1b4f30d9f5e12ca044b3fdbf94b48e"
     },
     {
-      "path": "rebuttal_experiments/run_mamba_crosscut_bounded.py",
       "bytes": 716,
+      "path": "rebuttal_experiments/run_mamba_crosscut_bounded.py",
       "sha256": "4d92583c8e3795a4b8ec68ddbd2f5ae6a472711f2eac0abdd6a50a3bc38be6ce"
     },
     {
-      "path": "rebuttal_experiments/spectral_qc.py",
       "bytes": 2304,
+      "path": "rebuttal_experiments/spectral_qc.py",
       "sha256": "f13d2c43f3178130d468296d19d302716bc7546f6ba86106307db5b53c97079e"
     },
     {
-      "path": "rebuttal_experiments/spectral_qc_scaled.py",
       "bytes": 3575,
+      "path": "rebuttal_experiments/spectral_qc_scaled.py",
       "sha256": "9a9da7b737465c2981598539242b9c51bfdc371f63726df77cb72fff637e2e2a"
     },
     {
-      "path": "rebuttal_experiments/supervise.py",
       "bytes": 3694,
+      "path": "rebuttal_experiments/supervise.py",
       "sha256": "94199f042cd818db7a590d629423732a6ce5de1bf4a81fcd3439d8af3efbf7ad"
     },
     {
-      "path": "rebuttal_experiments/test_gpt2_functional.py",
       "bytes": 5171,
+      "path": "rebuttal_experiments/test_gpt2_functional.py",
       "sha256": "f1f0e1971298c7c7d903c8735b93bdd63d343b3b28569951a1d06f00943dc638"
     },
     {
-      "path": "rebuttal_experiments/validate_mamba_patch.py",
       "bytes": 2999,
+      "path": "rebuttal_experiments/validate_mamba_patch.py",
       "sha256": "a05418f620441a521071a6ed32147a687ea7911294613a96487a3f3aad3df528"
     }
   ],
-  "source_manifest_sha256": "d8c997d153b675796e52ff3783ffa2b095285f239752c6522ca16838d6078eb3",
-  "scope": "Reviewed sources, vector figures and compact plot inputs; no private run plans, credentials, weights, document text or raw JSONL."
+  "parent_publication_manifest_sha256": "c453061027a30d493782cc7e7b4f7a4d7c269f55d322e250dae34c75b5c35a9d",
+  "publication_scope": "Retained functional/input-frame figures and active-frame diagnostic; withdrawn full/cross-cut figure exports and plotting rows excluded.",
+  "retained_figure_exports": [
+    {
+      "manuscript_figure": 5,
+      "stem": "p1_functional_loss_spectrum"
+    },
+    {
+      "manuscript_figure": 7,
+      "stem": "audited_geometry/input_frame_angles"
+    },
+    {
+      "manuscript_figure": null,
+      "scope": "supporting diagnostic",
+      "stem": "audited_geometry/active_frame_audit"
+    }
+  ],
+  "schema_version": 2,
+  "scope": "Reviewed sources, vector figures and compact plot inputs; no private run plans, credentials, weights, document text or raw JSONL.",
+  "source_archive_scope": "Current canonical contents for the preserved 37-name source allowlist; shared/historical utilities do not define current figure exports.",
+  "upstream_historical_manifest_sha256": "d8c997d153b675796e52ff3783ffa2b095285f239752c6522ca16838d6078eb3",
+  "validation": {
+    "functional_rows": 36,
+    "functional_rows_unchanged": true,
+    "geometry_rows": 73,
+    "published_vectors": 6,
+    "source_zip_verified": true,
+    "withdrawn_vector_files_present": false
+  },
+  "version": "retained_functional_geometry_release_final",
+  "withdrawal_note": "Previously completed full/cross-cut figure sets were withdrawn from the current manuscript/publication; archived results and generic code remain unchanged outside this release."
 }

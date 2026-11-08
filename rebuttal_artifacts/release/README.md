@@ -1,52 +1,53 @@
-# Audited rebuttal figures
+# Retained rebuttal figures
 
-The final release contains **five figure sets**, each as vector PDF and SVG:
+The current release contains two retained manuscript figures and one supporting
+geometry diagnostic, each as vector PDF and SVG:
 
 | File | Scientific scope |
 |---|---|
-| `p1_functional_loss_spectrum` | Separate single-head GPT-2 effects on next-token loss, alongside targeted-head stable rank. Layer-0 neutralization intervals cross zero; rank alone is not causally isolated. |
-| `p2_native_full_crosscut_srank` | Six fixed-runtime checkpoints, final-layer full versus strict midpoint cross-cut stable rank. |
-| `p2_frozen_factor_controls` | Fixed-logits ALiBi; explicit Mamba M/dt/D boundaries; fixed-value native/all-one mask transport gains. |
-| `audited_geometry/input_frame_angles` | Final-layer input X angles, only numerically full-row-rank points, on32 documents. Descriptive distances, not validation of a joint Haar law. |
-| `audited_geometry/active_frame_audit` | Active Q/K coherence and partial shared-subspace/ordered-basis overlap; empirical document CIs and Haar frame-variation bands are different quantities. |
+| `p1_functional_loss_spectrum` | Separate single-head GPT-2 effects on next-token loss and associated stable rank. This figure uses head means within documents; the original native-rank curves use head medians. Layer-0 neutralization intervals cross zero. |
+| `audited_geometry/input_frame_angles` | Final-layer input X angles at numerically full-row-rank points, on 32 documents. Descriptive distances do not validate a joint Haar law. |
+| `audited_geometry/active_frame_audit` | Active Q/K coherence and partial shared-subspace/ordered-basis overlap. Empirical document CIs and Haar frame-variation bands describe different quantities. |
 
-Codestral-7B(HF) denotes the completed Transformers4.57.1 experimental object.
-Its gated RMSNorm is global over8192 channels, unlike the official eight
-1024-channel groups. No equivalence to the official runtime is claimed, and
-no unvalidated native-norm patch or rerun is included. “Native” in these
-figures means the unmodified learned mask in that fixed runtime.
+The previously completed full/cross-cut comparison and frozen-factor control
+figures were withdrawn from the current manuscript and publication. Their
+vectors, captions and plotting rows are excluded here. Historical data and
+generic analysis code remain preserved separately; withdrawal does not mean
+the experiments were never run.
 
-The input-angle branch remains modulo[0,2pi), and angular W1 uses a
-deterministic uniform midpoint grid. The cited NeurIPS implementation instead
-uses np.angle+pi and an independently sampled uniform reference, so this is
-not an exact reproduction of that metric protocol. Full-U Q/K completions
-are excluded from the final figures. Coherence departures and incomplete
-ordered alignment remain visible and prevent a blanket Haar/common-frame
-validation claim.
+Codestral-7B (HF) denotes the recorded Transformers 4.57.1 implementation.
+Its gated RMSNorm is global over 8192 channels, unlike the official eight
+1024-channel groups. The retained geometry measurements describe that fixed
+implementation.
 
-Adjacent `.caption.md` files give definitions and interpretation limits.
-`p1_p2_plotting_rows.csv.gz` retains exactly128 corrected aggregate rows.
-`audited_geometry/audited_geometry_plotting_rows.csv.gz` retains exactly73
-verified aggregate rows. Replotting needs only NumPy and Matplotlib, with no
-Torch, checkpoint, dataset or network access:
+Input-angle diagnostics use modulo [0,2pi) and a deterministic uniform
+midpoint reference. The cited NeurIPS implementation uses np.angle+pi and
+an independently sampled uniform reference, so the metric protocols differ.
+Full-U Q/K completions are excluded from the retained figures. Active-frame
+concentration and incomplete ordered alignment remain visible.
+
+Adjacent `.caption.md` files provide definitions. `p1_plotting_rows.csv.gz`
+contains exactly 36 retained functional aggregate rows; the geometry cache
+contains 73 verified aggregate rows. Replotting needs NumPy and Matplotlib,
+without Torch, checkpoints, datasets or network access:
 
 ```bash
-python rebuttal_experiments/plot_rebuttal_figures.py \
-  --plotting-rows rebuttal_artifacts/release/p1_p2_plotting_rows.csv.gz \
-  --output /tmp/rebuttal_p1_p2
+python rebuttal_artifacts/release/plot_p1_release.py \
+  --plotting-rows rebuttal_artifacts/release/p1_plotting_rows.csv.gz \
+  --output /tmp/rebuttal_p1
 
 python rebuttal_experiments/plot_audited_geometry.py \
   --plotting-rows rebuttal_artifacts/release/audited_geometry/audited_geometry_plotting_rows.csv.gz \
   --output /tmp/rebuttal_audited_geometry
 ```
 
-These compact inputs preserve the saved estimates and intervals; they do not
-support a fresh bootstrap from raw model observations. Raw-source/config and
-summary hashes remain in the manifests. All final vectors were rendered and
-visually checked; they contain no embedded raster images. PNG previews are
-local only and excluded from the publication allowlist.
+These caches preserve saved estimates and intervals and do not support a fresh
+bootstrap from raw observations. The manifests retain source hashes and the
+selection provenance. PNG previews are local only. The public figure inventory
+is `PUBLICATION_MANIFEST.json`; it does not list withdrawn vectors as exports.
 
-`publication_code.zip` contains the explicit canonical source plus required
-legacy helpers, without Git metadata, credentials, SSH wrappers, historical
-server plans, weights or raw JSONL. Source and final figure hashes/sizes are
-listed in `PUBLICATION_ALLOWLIST.json`. No commit or push was performed.
+`publication_code.zip` contains current canonical contents from its preserved
+source-file allowlist,
+including shared and historical analysis utilities. Current figure exports
+are defined by the release manifest, rather than by every capability of those
+utilities. No credentials, SSH wrappers, weights or raw JSONL are included.
