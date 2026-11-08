@@ -29,6 +29,19 @@ machine-specific experiment directories are not included.
 the Based and Mamba reconstruction helpers imported by the production runners.
 The former also retains the original small comparison CLI for diagnostics.
 
+## Rebuttal additions and portable artifacts
+
+The supplemental sources in [`rebuttal_experiments/`](rebuttal_experiments/README.md)
+run from this standalone repository. They include full/cross-cut spectra,
+GPT-2 value-path interventions, position/decay controls and trained-frame diagnostics.
+
+The audited vector figures, compact inputs and replot commands are in
+[`rebuttal_artifacts/release/`](rebuttal_artifacts/release/README.md).
+[`REVISED_FIGURES.md`](rebuttal_artifacts/release/REVISED_FIGURES.md) maps them
+to the revised manuscript. No checkpoint or GPU is needed to replot the saved
+means and document-bootstrap intervals. Codestral measurements use the explicit
+Transformers 4.57.1 normalization convention documented with those figures.
+
 ## Environment
 
 The production environment used Python 3.14, PyTorch with CUDA 12.8,

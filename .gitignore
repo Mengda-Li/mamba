@@ -34,3 +34,22 @@ __pycache__/
 .DS_Store
 *.swp
 *.swo
+
+# Rebuttal raw runs/checkpoints and large generated observations
+/models/
+/data/
+/rebuttal_artifacts/results/
+/rebuttal_artifacts/runs*/
+/rebuttal_artifacts/raw*/
+/rebuttal_artifacts/**/*.jsonl
+/rebuttal_artifacts/**/*.parquet
+/rebuttal_artifacts/**/*.safetensors
+/rebuttal_artifacts/**/pytorch_model*.bin
+/rebuttal_artifacts/**/logs/
+/rebuttal_artifacts/**/figures/
+# Small aggregate *.csv.gz, 128-token heatmap *.npz and provenance stay eligible.
+
+# Keep local audit/history caches private; publish the reviewed release only.
+/rebuttal_artifacts/*
+!/rebuttal_artifacts/release/
+/rebuttal_experiments/historical_plans/
