@@ -32,9 +32,9 @@
         "sha256": "53e0bf1ae20144acf21461363cdca34ae90fb0de944761fc8f56580014aab7eb"
       },
       {
-        "bytes": 3417,
+        "bytes": 3460,
         "path": "rebuttal_experiments/README.md",
-        "sha256": "7ba5bd247ade3d38edd8dda9d85eb5eabd94c81aa481f9fe10140506b4b4def1"
+        "sha256": "c68030a246be9efa2db993b541b57ace8e7d7c2f249c81a27cbad9f3dfcef252"
       },
       {
         "bytes": 223,
@@ -90,6 +90,11 @@
         "bytes": 12996,
         "path": "rebuttal_experiments/mamba_memory_patch_exact.py",
         "sha256": "d9f021a5cbd82a74f47aeacba7743922d47203a1f5241834da3a8ea8b4f43727"
+      },
+      {
+        "bytes": 3665,
+        "path": "rebuttal_experiments/plot_alibi_control.py",
+        "sha256": "8d6b51b18ff480b2687d114cd518d63d8ebc15291a297b577b878e8a5da88272"
       },
       {
         "bytes": 11589,
@@ -188,7 +193,7 @@
       }
     ],
     "path": "rebuttal_artifacts/release/publication_code.zip",
-    "sha256": "b52eec3210eb4780a902cd4c9d4a4c7e086a8d375a21a9f7ae97bfd4ee27158a"
+    "sha256": "e95f468aba9091d04df8e8b482cfb033bcb9ab74008ea29d6a355f093aba76d2"
   },
   "files": [
     {
@@ -197,9 +202,9 @@
       "sha256": "a0f776b6479eef533e506c70b005d2c3f3b78d2f943b990349e0ba27563af26a"
     },
     {
-      "bytes": 7960,
+      "bytes": 8010,
       "path": "README.md",
-      "sha256": "c123d7e928446deb5c031f3255f2d7d0758cbbed7226917fe2d68c416533c6b1"
+      "sha256": "77f65b8f298ed4a8ed37367b24fd3e19ac9098256f7ddc83e93ed247e6f71adf"
     },
     {
       "bytes": 53689,
@@ -227,14 +232,39 @@
       "sha256": "4b8290b4b998d224ccaa1d374bde3e90caacfdeeb0877990a254f0328558821b"
     },
     {
-      "bytes": 3072,
+      "bytes": 3422,
       "path": "rebuttal_artifacts/release/README.md",
-      "sha256": "8b5f0fc499af7dd81b405c879f61fded7f84e18fbb0339122977c68e85627a66"
+      "sha256": "e2329b49ff7d6bdd7ef9c34d04095d27c8de06a81308bbc86957483c351a21eb"
     },
     {
-      "bytes": 1006,
+      "bytes": 1280,
       "path": "rebuttal_artifacts/release/REVISED_FIGURES.md",
-      "sha256": "447cc2ebba39c751c0c0943b697e799863b7e7eef52c1f84f3095c6e389ca649"
+      "sha256": "0dbe2f6adeb5db641887b5a461a5b639efb62828c58acc561dcb237591d6259e"
+    },
+    {
+      "bytes": 867,
+      "path": "rebuttal_artifacts/release/alibi_full_rank_control.caption.md",
+      "sha256": "8b3304a1a58c53a360eae147a8e94a9c9e01e73e2fc6d2ddd774f1eb81752a21"
+    },
+    {
+      "bytes": 20774,
+      "path": "rebuttal_artifacts/release/alibi_full_rank_control.pdf",
+      "sha256": "f6945a72170b5798c8ff95cb3e17634e6dbc14deb899294f145de71db055e539"
+    },
+    {
+      "bytes": 35455,
+      "path": "rebuttal_artifacts/release/alibi_full_rank_control.svg",
+      "sha256": "8fa840dd126afdddd7413c88429f62c04a7cacaa57f861736b3dff5659c16acb"
+    },
+    {
+      "bytes": 886,
+      "path": "rebuttal_artifacts/release/alibi_plotting_rows.csv.gz",
+      "sha256": "f04ba553ca24979d71b963c01548c1564319a659441963223866102a095a8a12"
+    },
+    {
+      "bytes": 1074,
+      "path": "rebuttal_artifacts/release/alibi_replot_manifest.json",
+      "sha256": "56b6ab7607335de69962f73fdc1bad73b5ad5fb475ca95a7e01eb95516b24aa4"
     },
     {
       "bytes": 1410,
@@ -312,9 +342,9 @@
       "sha256": "24e3b78513f8fe2636035fed477d05f1b3a322d27ede74831fb3970e1fe8289c"
     },
     {
-      "bytes": 151788,
+      "bytes": 153572,
       "path": "rebuttal_artifacts/release/publication_code.zip",
-      "sha256": "b52eec3210eb4780a902cd4c9d4a4c7e086a8d375a21a9f7ae97bfd4ee27158a"
+      "sha256": "e95f468aba9091d04df8e8b482cfb033bcb9ab74008ea29d6a355f093aba76d2"
     },
     {
       "bytes": 3565,
@@ -322,9 +352,9 @@
       "sha256": "53e0bf1ae20144acf21461363cdca34ae90fb0de944761fc8f56580014aab7eb"
     },
     {
-      "bytes": 3417,
+      "bytes": 3460,
       "path": "rebuttal_experiments/README.md",
-      "sha256": "7ba5bd247ade3d38edd8dda9d85eb5eabd94c81aa481f9fe10140506b4b4def1"
+      "sha256": "c68030a246be9efa2db993b541b57ace8e7d7c2f249c81a27cbad9f3dfcef252"
     },
     {
       "bytes": 223,
@@ -380,6 +410,11 @@
       "bytes": 12996,
       "path": "rebuttal_experiments/mamba_memory_patch_exact.py",
       "sha256": "d9f021a5cbd82a74f47aeacba7743922d47203a1f5241834da3a8ea8b4f43727"
+    },
+    {
+      "bytes": 3665,
+      "path": "rebuttal_experiments/plot_alibi_control.py",
+      "sha256": "8d6b51b18ff480b2687d114cd518d63d8ebc15291a297b577b878e8a5da88272"
     },
     {
       "bytes": 11589,
@@ -478,7 +513,8 @@
     }
   ],
   "parent_publication_manifest_sha256": "c453061027a30d493782cc7e7b4f7a4d7c269f55d322e250dae34c75b5c35a9d",
-  "publication_scope": "Retained functional/input-frame figures and active-frame diagnostic; withdrawn full/cross-cut figure exports and plotting rows excluded.",
+  "preceding_publication_manifest_sha256": "ca370abd29e10382981709835dae8a7b2674bee9822fd7ef646b306baef7b065",
+  "publication_scope": "Functional and input-frame figures, supporting active-frame diagnostic, and a focused fixed-GPT-logit full-rank ALiBi control. Other withdrawn comparison exports remain excluded.",
   "retained_figure_exports": [
     {
       "manuscript_figure": 5,
@@ -489,6 +525,11 @@
       "stem": "audited_geometry/input_frame_angles"
     },
     {
+      "manuscript_figure": 10,
+      "scope": "fixed GPT-2 logits; full stable rank and erank2 only",
+      "stem": "alibi_full_rank_control"
+    },
+    {
       "manuscript_figure": null,
       "scope": "supporting diagnostic",
       "stem": "audited_geometry/active_frame_audit"
@@ -496,16 +537,20 @@
   ],
   "schema_version": 2,
   "scope": "Reviewed sources, vector figures and compact plot inputs; no private run plans, credentials, weights, document text or raw JSONL.",
-  "source_archive_scope": "Current canonical contents for the preserved 37-name source allowlist; shared/historical utilities do not define current figure exports.",
+  "source_archive_scope": "Current canonical contents for the preserved source allowlist plus plot_alibi_control.py (38 source files); historical utilities do not define current figure exports.",
   "upstream_historical_manifest_sha256": "d8c997d153b675796e52ff3783ffa2b095285f239752c6522ca16838d6078eb3",
   "validation": {
+    "alibi_data_unchanged": true,
+    "alibi_documents_per_cell": 32,
+    "alibi_rows": 18,
+    "focused_alibi_only": true,
     "functional_rows": 36,
     "functional_rows_unchanged": true,
     "geometry_rows": 73,
-    "published_vectors": 6,
+    "published_vectors": 8,
     "source_zip_verified": true,
     "withdrawn_vector_files_present": false
   },
-  "version": "retained_functional_geometry_release_final",
-  "withdrawal_note": "Previously completed full/cross-cut figure sets were withdrawn from the current manuscript/publication; archived results and generic code remain unchanged outside this release."
+  "version": "retained_functional_geometry_focused_alibi_release",
+  "withdrawal_note": "Earlier completed full/cross-cut and combined mask/feedthrough figure sets remain withdrawn. Only the focused fixed-logit full-spectrum ALiBi control is restored; historical data remain archived separately."
 }

@@ -5,10 +5,11 @@ experiment repository through `repo_paths.py`, so a standalone GitHub clone
 works without the paper's directory layout. Run commands from repository root.
 Checkpoints, datasets and frozen manifests are explicit local inputs.
 
-The current publication retains the GPT-2 functional figure and the audited
-frame-geometry figures. Completed full/cross-cut and frozen-factor figure sets
-were withdrawn from the manuscript; their vectors and aggregate plotting rows
-are excluded from `rebuttal_artifacts/release/`. Generic runners and historical
+The current publication retains the GPT-2 functional figure, audited
+frame-geometry figures and a focused fixed-GPT-logit ALiBi full-spectrum
+control. Earlier full/cross-cut and combined mask/feedthrough figure sets
+remain withdrawn; their vectors and aggregate plotting rows are excluded from
+`rebuttal_artifacts/release/`. Generic runners and historical
 source remain available without redefining the current publication inventory.
 
 ```bash

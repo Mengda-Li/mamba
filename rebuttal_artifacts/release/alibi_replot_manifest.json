@@ -1,0 +1,17 @@
+{
+  "documents_per_cell": 32,
+  "files": {
+    "alibi_full_rank_control.caption.md": "8b3304a1a58c53a360eae147a8e94a9c9e01e73e2fc6d2ddd774f1eb81752a21",
+    "alibi_full_rank_control.pdf": "f6945a72170b5798c8ff95cb3e17634e6dbc14deb899294f145de71db055e539",
+    "alibi_full_rank_control.svg": "8fa840dd126afdddd7413c88429f62c04a7cacaa57f861736b3dff5659c16acb"
+  },
+  "local_preview_hashes_not_published": {
+    "alibi_full_rank_control.png": "b7eae99b56ad78d5c777061456220d6ecf88eef2d1114c249f2053f5cfa11861"
+  },
+  "plotting_rows_sha256": "f04ba553ca24979d71b963c01548c1564319a659441963223866102a095a8a12",
+  "publication_selection": "Only fixed-logit full stable rank and erank2; previously withdrawn cross-cut, gain and feedthrough exports remain excluded.",
+  "scope": "fixed captured GPT-2 logits; saved full-operator means and document-bootstrap intervals",
+  "script_sha256": "8d6b51b18ff480b2687d114cd518d63d8ebc15291a297b577b878e8a5da88272",
+  "selected_rows": 18,
+  "source_aggregate_csv_sha256": "265a6a06e22b7e59f4a3095c4ec104d4db52f05b571cd25a6183cc1beced1a85"
+}
