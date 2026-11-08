@@ -93,26 +93,26 @@ def main():
     for col, layer in enumerate((0, 5, 11)):
         base = select(functional, checkpoint="gpt2", layer=layer)
         ax = axes[0, col]
-        for intervention, label, color in (("ablate", "Head ablation", "#2768ad"),
-            ("sink-neutralized", "Sink neutralization", "#cf6c24")):
+        for intervention, label, color in (("ablate", "Head output zeroed", "#2768ad"),
+            ("sink-neutralized", "First-token reset", "#cf6c24")):
             draw(ax, select(base, intervention=intervention, metric="delta_loss"), label, color)
         ax.axhline(0, color="#555555", linewidth=.6)
         ax.set_title(f"Layer {layer}")
         if col == 0:
-            ax.set_ylabel("Paired next-token ΔNLL")
+            ax.set_ylabel("Loss change (nats/token)")
             ax.legend(frameon=False, loc="best", fontsize=6.2)
         ax = axes[1, col]
         draw(ax, select(base, intervention="ablate", metric="native_srank"), "Native", "#2768ad")
         draw(ax, select(base, intervention="sink-neutralized", metric="intervention_srank"),
-            "Sink-neutralized", "#cf6c24")
+            "First-token reset", "#cf6c24")
         if col == 0:
             ax.set_ylabel("Full mixer stable rank")
             ax.legend(frameon=False, fontsize=6.2)
-    fig.suptitle("GPT-2: separately applied single-head interventions", y=.994, fontsize=9)
+    fig.suptitle("GPT-2: one head modified at a time", y=.994, fontsize=9)
     fig.supxlabel("Context tokens", y=.025, fontsize=8)
     fig.subplots_adjust(left=.11, right=.985, top=.91, bottom=.145, hspace=.43, wspace=.37)
     save(fig, "p1_functional_loss_spectrum",
-        "GPT-2 single-head functional interventions and corrected operator spectra. Each head is intervened on separately through the full native forward pass; means first average heads within each document, then average the same 32 documents. These layer summaries use head means; manuscript Figure 1 reports head medians. Top: paired change in next-token NLL, with positive values indicating worse prediction. Layer-0 neutralization intervals cross zero at all three lengths; its small curve is compressed by the larger ablation scale. Bottom: the targeted head's full-mixer stable rank before and after causal sink neutralization; ablation is omitted from the rank panel because its operator is zero. Shading preserves 2000-resample document-bootstrap 95% intervals. Rank changes and loss effects are distinct measurements; these results do not establish a rank-only causal effect on task loss.")
+        "GPT-2 single-head functional interventions and corrected operator spectra. Each head is intervened on separately through the full native forward pass; means first average heads within each document, then average the same 32 documents. These layer summaries use head means; manuscript Figure 1 reports head medians. Top: absolute change in mean next-token negative log-likelihood (nats/token); positive values mean worse prediction. For the current manuscript relative-loss figure, use rebuttal_artifacts/release/plot_p1_release.py and its paired relative-loss summaries. Layer-0 neutralization intervals cross zero at all three lengths; its small curve is compressed by the larger ablation scale. Bottom: the targeted head's full-mixer stable rank before and after causal sink neutralization; ablation is omitted from the rank panel because its operator is zero. Shading preserves 2000-resample document-bootstrap 95% intervals. Rank changes and loss effects are distinct measurements; these results do not establish a rank-only causal effect on task loss.")
 
     fig, axes = plt.subplots(2, 3, figsize=(6.6, 4.75))
     for ax, (model, title) in zip(axes.flat, MODELS):

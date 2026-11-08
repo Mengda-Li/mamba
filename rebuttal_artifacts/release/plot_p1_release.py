@@ -28,8 +28,8 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     functional = read_csv(args.plotting_rows)
-    if len(functional) != 36 or any(row.get("checkpoint") != "gpt2" or not row.get("intervention") for row in functional):
-        raise ValueError("Expected the 36 retained GPT-2 functional plotting rows")
+    if len(functional) != 54 or any(row.get("checkpoint") != "gpt2" or not row.get("intervention") for row in functional):
+        raise ValueError("Expected the 54 retained GPT-2 functional plotting rows")
     import numpy as np
     import matplotlib
     matplotlib.use("Agg")
@@ -70,30 +70,36 @@ def main():
         (args.output / f"{name}.caption.md").write_text(caption + "\n")
         plt.close(fig)
 
-    fig, axes = plt.subplots(2, 3, figsize=(6.6, 4.65))
+    fig, axes = plt.subplots(3, 3, figsize=(6.6, 6.55))
     for col, layer in enumerate((0, 5, 11)):
         base = select(functional, checkpoint="gpt2", layer=layer)
-        ax = axes[0, col]
-        for intervention, label, color in (("ablate", "Head ablation", "#2768ad"),
-            ("sink-neutralized", "Sink neutralization", "#cf6c24")):
-            draw(ax, select(base, intervention=intervention, metric="delta_loss"), label, color)
-        ax.axhline(0, color="#555555", linewidth=.6)
-        ax.set_title(f"Layer {layer}")
-        if col == 0:
-            ax.set_ylabel("Paired next-token ΔNLL")
-            ax.legend(frameon=False, loc="best", fontsize=6.2)
-        ax = axes[1, col]
-        draw(ax, select(base, intervention="ablate", metric="native_srank"), "Native", "#2768ad")
+        for row, metric, ylabel in (
+                (0, "relative_loss_percent", "Relative loss change (%)"),
+                (1, "relative_ppl_percent", "Relative PPL change (%)")):
+            ax = axes[row, col]
+            for intervention, label, color in (
+                    ("ablate", "Head output zeroed", "#2768ad"),
+                    ("sink-neutralized", "First-token reset", "#cf6c24")):
+                draw(ax, select(base, intervention=intervention, metric=metric), label, color)
+            ax.axhline(0, color="#555555", linewidth=.6)
+            if row == 0:
+                ax.set_title(f"Layer {layer}")
+            if col == 0:
+                ax.set_ylabel(ylabel)
+                if row == 0:
+                    ax.legend(frameon=False, loc="best", fontsize=6.2)
+        ax = axes[2, col]
+        draw(ax, select(base, intervention="ablate", metric="native_srank"), "Original head", "#2768ad")
         draw(ax, select(base, intervention="sink-neutralized", metric="intervention_srank"),
-            "Sink-neutralized", "#cf6c24")
+            "First-token reset", "#cf6c24")
         if col == 0:
             ax.set_ylabel("Full mixer stable rank")
             ax.legend(frameon=False, fontsize=6.2)
-    fig.suptitle("GPT-2: separately applied single-head interventions", y=.994, fontsize=9)
-    fig.supxlabel("Context tokens", y=.025, fontsize=8)
-    fig.subplots_adjust(left=.11, right=.985, top=.91, bottom=.145, hspace=.43, wspace=.37)
+    fig.suptitle("GPT-2: one head modified at a time", y=.994, fontsize=9)
+    fig.supxlabel("Context tokens", y=.018, fontsize=8)
+    fig.subplots_adjust(left=.12, right=.985, top=.947, bottom=.10, hspace=.43, wspace=.42)
     save(fig, "p1_functional_loss_spectrum",
-        "GPT-2 single-head functional interventions and corrected operator spectra. Each head is intervened on separately through the full native forward pass; means first average heads within each document, then average the same 32 documents. These layer summaries use head means; manuscript Figure 1 reports head medians. Top: paired change in next-token NLL, with positive values indicating worse prediction. Layer-0 neutralization intervals cross zero at all three lengths; its small curve is compressed by the larger ablation scale. Bottom: the targeted head's full-mixer stable rank before and after causal sink neutralization; ablation is omitted from the rank panel because its operator is zero. Shading preserves 2000-resample document-bootstrap 95% intervals. Rank changes and loss effects are distinct measurements; these results do not establish a rank-only causal effect on task loss.")
+        "Separate GPT-2 head modifications: the evaluation code zeros one head output or resets its first-token score to the causally accessible non-first-token median, retaining the same input and model weights. Top: relative mean next-token prediction-loss change (%), 100*(modified NLL-native NLL)/native NLL. Middle: relative perplexity change (%), 100*(exp(modified NLL-native NLL)-1), where NLL=-mean log probability of the true next token and PPL=exp(NLL). These are two scales of the same final vocabulary predictions; positive changes mean worse prediction. Each percentage is computed per head/document trial, then heads are averaged within each document and documents are averaged. Bands bootstrap the 32 paired document summaries. Bottom: native and first-token-reset stable ranks; these are head means, whereas manuscript Figure1 uses medians. All head modifications are performed separately.")
 
     manifest = dict(script_sha256=sha(__file__),
         source_plotting_rows_sha256=sha(args.plotting_rows),

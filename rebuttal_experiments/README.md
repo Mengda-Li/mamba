@@ -6,11 +6,15 @@ works without the paper's directory layout. Run commands from repository root.
 Checkpoints, datasets and frozen manifests are explicit local inputs.
 
 The current publication retains the GPT-2 functional figure, audited
-frame-geometry figures and a focused fixed-GPT-logit ALiBi full-spectrum
+input-angle figure, Q/K subspace-overlap table rows and a focused fixed-GPT-logit ALiBi full-spectrum
 control. Earlier full/cross-cut and combined mask/feedthrough figure sets
 remain withdrawn; their vectors and aggregate plotting rows are excluded from
 `rebuttal_artifacts/release/`. Generic runners and historical
 source remain available without redefining the current publication inventory.
+Coherence, fourth-moment and leverage-concentration diagnostics are excluded
+from the current export. The release geometry replot command uses
+`plot_audited_geometry.py --input-only` to generate only the retained input-angle
+figure while preserving the Q/K subspace-overlap table rows.
 
 ```bash
 python -m unittest discover -s rebuttal_experiments -p test_gpt2_functional.py -v

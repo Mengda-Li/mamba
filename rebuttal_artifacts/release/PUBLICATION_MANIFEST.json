@@ -32,9 +32,9 @@
         "sha256": "53e0bf1ae20144acf21461363cdca34ae90fb0de944761fc8f56580014aab7eb"
       },
       {
-        "bytes": 3460,
+        "bytes": 3775,
         "path": "rebuttal_experiments/README.md",
-        "sha256": "c68030a246be9efa2db993b541b57ace8e7d7c2f249c81a27cbad9f3dfcef252"
+        "sha256": "2309cc3f70fa027b1a9b1a8b7062c9158644f50a61ce0baebf32b39498789920"
       },
       {
         "bytes": 223,
@@ -97,9 +97,9 @@
         "sha256": "8d6b51b18ff480b2687d114cd518d63d8ebc15291a297b577b878e8a5da88272"
       },
       {
-        "bytes": 11589,
+        "bytes": 12668,
         "path": "rebuttal_experiments/plot_audited_geometry.py",
-        "sha256": "314c38adfccf8ec8b0000e58a92f513cbd87cb8a9178795e66eddc0cbf39185d"
+        "sha256": "07674e3177ded41fd3e7a65f78e71d19865d05fee6d04916616fa9585b8d0b91"
       },
       {
         "bytes": 7266,
@@ -117,9 +117,9 @@
         "sha256": "f7c3eef53a2d016262cb34e2bdb2bdd117698c6c70fd56551c0a6add481986e0"
       },
       {
-        "bytes": 12568,
+        "bytes": 12724,
         "path": "rebuttal_experiments/plot_rebuttal_figures.py",
-        "sha256": "43eb39d0a647dec873cc83be3000f6cb7168b3d549722bb4d7e241837e576318"
+        "sha256": "5cac1f9095a9e5cf3a0d05b431739c0e13d675e75ef4da85681f51b442ff343c"
       },
       {
         "bytes": 22762,
@@ -190,10 +190,15 @@
         "bytes": 2999,
         "path": "rebuttal_experiments/validate_mamba_patch.py",
         "sha256": "a05418f620441a521071a6ed32147a687ea7911294613a96487a3f3aad3df528"
+      },
+      {
+        "bytes": 14504,
+        "path": "rebuttal_experiments/analyze_relative_loss.py",
+        "sha256": "dc95604403883d319d1d7396a27d73eaf85edf686f5337927de0891f32c3c2c2"
       }
     ],
     "path": "rebuttal_artifacts/release/publication_code.zip",
-    "sha256": "e95f468aba9091d04df8e8b482cfb033bcb9ab74008ea29d6a355f093aba76d2"
+    "sha256": "e2f22b3f7b79a4d6d94b340b49d7d62a2078cb6bee8691df958febd5575cd6d5"
   },
   "files": [
     {
@@ -202,9 +207,9 @@
       "sha256": "a0f776b6479eef533e506c70b005d2c3f3b78d2f943b990349e0ba27563af26a"
     },
     {
-      "bytes": 8010,
+      "bytes": 8148,
       "path": "README.md",
-      "sha256": "77f65b8f298ed4a8ed37367b24fd3e19ac9098256f7ddc83e93ed247e6f71adf"
+      "sha256": "ad5fe4057f5dec6f76fb664b012006e214f1bf7f1fb925f2fe7e3d508f1f1e37"
     },
     {
       "bytes": 53689,
@@ -232,14 +237,14 @@
       "sha256": "4b8290b4b998d224ccaa1d374bde3e90caacfdeeb0877990a254f0328558821b"
     },
     {
-      "bytes": 3422,
+      "bytes": 4293,
       "path": "rebuttal_artifacts/release/README.md",
-      "sha256": "e2329b49ff7d6bdd7ef9c34d04095d27c8de06a81308bbc86957483c351a21eb"
+      "sha256": "613eba87f2f9a623b5f6c90a037bd80707665c83a4f99c37045515b8c3874a9d"
     },
     {
-      "bytes": 1280,
+      "bytes": 1262,
       "path": "rebuttal_artifacts/release/REVISED_FIGURES.md",
-      "sha256": "0dbe2f6adeb5db641887b5a461a5b639efb62828c58acc561dcb237591d6259e"
+      "sha256": "15df32a185d06325241b71c312cbd13d9e54b67fb2f956fc264882e10b7e5063"
     },
     {
       "bytes": 867,
@@ -267,34 +272,19 @@
       "sha256": "56b6ab7607335de69962f73fdc1bad73b5ad5fb475ca95a7e01eb95516b24aa4"
     },
     {
-      "bytes": 1410,
-      "path": "rebuttal_artifacts/release/audited_geometry/active_frame_audit.caption.md",
-      "sha256": "2e39052b15cb444c6323f86e1948ab6898cf72b308484c749863ab26775172a7"
-    },
-    {
-      "bytes": 18910,
-      "path": "rebuttal_artifacts/release/audited_geometry/active_frame_audit.pdf",
-      "sha256": "37f8dca7180f200312af3abc52a472f6fae3758b1f43ecf462e1b47b1454e30f"
-    },
-    {
-      "bytes": 41967,
-      "path": "rebuttal_artifacts/release/audited_geometry/active_frame_audit.svg",
-      "sha256": "12d4447722182e1087e6040e9f2f1da53600ea760a8fe1ad145c5232d00db37d"
-    },
-    {
-      "bytes": 1936,
+      "bytes": 2386,
       "path": "rebuttal_artifacts/release/audited_geometry/audited_geometry_manifest.json",
-      "sha256": "f0c522c2e787aa7a1d7bd634037a3a9a20d017f5ec576ef886ad4e10f6d0f6ba"
+      "sha256": "40c6c7b4772327451ca8575a71303631b768a736c245d11d8ff6d997259076b4"
     },
     {
-      "bytes": 6344,
+      "bytes": 5652,
       "path": "rebuttal_artifacts/release/audited_geometry/audited_geometry_plotting_rows.csv.gz",
-      "sha256": "b1e0b7dd7b1c58bf80dd12c843f03161f7c0e171c8beaa83e730e66ce7c81c32"
+      "sha256": "2da9e2ec0eef041df932b35993b88bc8b49def34769dd27913ab7831ef88be02"
     },
     {
-      "bytes": 1109,
+      "bytes": 1042,
       "path": "rebuttal_artifacts/release/audited_geometry/input_frame_angles.caption.md",
-      "sha256": "56d55961589e01301ad90cc25fd45676f350018c72dbb99bf921561b4a55f57f"
+      "sha256": "a4d404189dd6d94842182d8d9b5e1cf8787343c165afd8e41ed81451f65bcfc0"
     },
     {
       "bytes": 23705,
@@ -307,44 +297,89 @@
       "sha256": "e552fa10a99cdda302253902bba1bbd1eebaec12dcc073a33724ac04cdc293b3"
     },
     {
-      "bytes": 889,
+      "bytes": 897,
       "path": "rebuttal_artifacts/release/p1_functional_loss_spectrum.caption.md",
-      "sha256": "769dde9d8daadf9c8e856ec158aca94c0e428cf0e1e9c168a83f285c1d2d0b72"
+      "sha256": "67a9de6ce11026c35a1ad4c9179df8e755a427e4de693292f5a5666ae81a7f12"
     },
     {
-      "bytes": 20654,
+      "bytes": 28979,
       "path": "rebuttal_artifacts/release/p1_functional_loss_spectrum.pdf",
-      "sha256": "86161096b6d1e643edc21910d9fd29fa4160780ef5644b960cf11c7d3ea1c4e2"
+      "sha256": "3b2a59dd10a7e50459ae1fad96d9b54b8cc08892fdf3172da6717a11449b2ed7"
     },
     {
-      "bytes": 63777,
+      "bytes": 95250,
       "path": "rebuttal_artifacts/release/p1_functional_loss_spectrum.svg",
-      "sha256": "aab46ac5a85bee151e3db7387f45773834992fd1731bcacb99d6629ae749c113"
+      "sha256": "aec6835fabb6ca22f04415a7c1e9b01112302f858400e6170ea714589f126ee2"
     },
     {
-      "bytes": 1248,
+      "bytes": 2319,
       "path": "rebuttal_artifacts/release/p1_manifest.json",
-      "sha256": "37a702732f2e79246761c3a81aa86196e50b114bfba6c25e7a20447ee3bca444"
+      "sha256": "64b4fc60884d96dcb7c124db3c11c97a31e78f3cf2cf46186fadd2581ef45152"
     },
     {
-      "bytes": 1716,
+      "bytes": 2860,
       "path": "rebuttal_artifacts/release/p1_plotting_rows.csv.gz",
-      "sha256": "f5c695952b3a05d6e1560cb9d07dddeb981486669f2f3eb9e4d03343bc15ae07"
+      "sha256": "33d042d363d296f38bf793101e7706c6ae86d1e3474b55bf9229db288b109b73"
     },
     {
-      "bytes": 781,
+      "bytes": 812,
       "path": "rebuttal_artifacts/release/p1_replot_manifest.json",
-      "sha256": "6ba4ce046d551865dcb72607c08cedced5a849d92d5f3e1db23094a7fb920d15"
+      "sha256": "36eefb4baf264718283e7c64ab4198d3554c624978a10d01cd5b21bae6bc74dd"
     },
     {
-      "bytes": 5703,
+      "bytes": 5989,
       "path": "rebuttal_artifacts/release/plot_p1_release.py",
-      "sha256": "24e3b78513f8fe2636035fed477d05f1b3a322d27ede74831fb3970e1fe8289c"
+      "sha256": "8eb8a150256978192c86181b17ce4b47528ea428e118b1a46753706fca4ca275"
     },
     {
-      "bytes": 153572,
+      "bytes": 157402,
       "path": "rebuttal_artifacts/release/publication_code.zip",
-      "sha256": "e95f468aba9091d04df8e8b482cfb033bcb9ab74008ea29d6a355f093aba76d2"
+      "sha256": "e2f22b3f7b79a4d6d94b340b49d7d62a2078cb6bee8691df958febd5575cd6d5"
+    },
+    {
+      "bytes": 3744,
+      "path": "rebuttal_artifacts/release/relative_loss/analysis_manifest.json",
+      "sha256": "9a7bab96cbc53b12da32aa655bb6904e885404c4319facd49d8fcbebcf43e1c1"
+    },
+    {
+      "bytes": 248143,
+      "path": "rebuttal_artifacts/release/relative_loss/p1_numeric_losses.csv.gz",
+      "sha256": "01e1d9998cc7c1ee7c9cde87838ba577798f2c8eadbe6796574a39f30d07a536"
+    },
+    {
+      "bytes": 22520,
+      "path": "rebuttal_artifacts/release/relative_loss/relative_loss_document_summary.csv.gz",
+      "sha256": "0ac4d24bc423f4445cb6bf0cd5a58e2e9727ec5d3b949cacbf294d5f383b2ebc"
+    },
+    {
+      "bytes": 4864,
+      "path": "rebuttal_artifacts/release/relative_loss/relative_loss_head_summary.csv",
+      "sha256": "aa063ea6c21a0c0793bc61733197556beee70a0310ab4fae309a60b7459d5149"
+    },
+    {
+      "bytes": 3680,
+      "path": "rebuttal_artifacts/release/relative_loss/relative_loss_layer_summary.csv",
+      "sha256": "1f0875260ad47f18234155eb21a0f166dc7f1d12dbc8f788ac0b9c841590ff0e"
+    },
+    {
+      "bytes": 8928,
+      "path": "rebuttal_artifacts/release/relative_loss/relative_ppl_document_summary.csv.gz",
+      "sha256": "c0df21978ecb587e2ac314395b81f2485db6034ed39847dda7095281503e59e7"
+    },
+    {
+      "bytes": 3350,
+      "path": "rebuttal_artifacts/release/relative_loss/relative_ppl_head_summary.csv",
+      "sha256": "3a4c883735dd0c0fc77c7486456d0b34d30f0a2bed7272c685efa4d6b0a665ac"
+    },
+    {
+      "bytes": 2532,
+      "path": "rebuttal_artifacts/release/relative_loss/relative_ppl_layer_summary.csv",
+      "sha256": "fa559fb874d09d04b192cdd1d9400f15a15accf6a205c6a7ed313279a4fedf96"
+    },
+    {
+      "bytes": 31461,
+      "path": "rebuttal_artifacts/release/relative_loss/source_manifest.json",
+      "sha256": "0fd21c3041ff67891c1e30c3d450528836c9b2af130b16be7ee50f17042de388"
     },
     {
       "bytes": 3565,
@@ -352,9 +387,9 @@
       "sha256": "53e0bf1ae20144acf21461363cdca34ae90fb0de944761fc8f56580014aab7eb"
     },
     {
-      "bytes": 3460,
+      "bytes": 3775,
       "path": "rebuttal_experiments/README.md",
-      "sha256": "c68030a246be9efa2db993b541b57ace8e7d7c2f249c81a27cbad9f3dfcef252"
+      "sha256": "2309cc3f70fa027b1a9b1a8b7062c9158644f50a61ce0baebf32b39498789920"
     },
     {
       "bytes": 223,
@@ -370,6 +405,11 @@
       "bytes": 40321,
       "path": "rebuttal_experiments/analyze_rebuttal.py",
       "sha256": "63d1c9b96bb29ea217261e0f413984d666152a7371abda9260e42bbf72e5ea58"
+    },
+    {
+      "bytes": 14504,
+      "path": "rebuttal_experiments/analyze_relative_loss.py",
+      "sha256": "dc95604403883d319d1d7396a27d73eaf85edf686f5337927de0891f32c3c2c2"
     },
     {
       "bytes": 8654,
@@ -417,9 +457,9 @@
       "sha256": "8d6b51b18ff480b2687d114cd518d63d8ebc15291a297b577b878e8a5da88272"
     },
     {
-      "bytes": 11589,
+      "bytes": 12668,
       "path": "rebuttal_experiments/plot_audited_geometry.py",
-      "sha256": "314c38adfccf8ec8b0000e58a92f513cbd87cb8a9178795e66eddc0cbf39185d"
+      "sha256": "07674e3177ded41fd3e7a65f78e71d19865d05fee6d04916616fa9585b8d0b91"
     },
     {
       "bytes": 7266,
@@ -437,9 +477,9 @@
       "sha256": "f7c3eef53a2d016262cb34e2bdb2bdd117698c6c70fd56551c0a6add481986e0"
     },
     {
-      "bytes": 12568,
+      "bytes": 12724,
       "path": "rebuttal_experiments/plot_rebuttal_figures.py",
-      "sha256": "43eb39d0a647dec873cc83be3000f6cb7168b3d549722bb4d7e241837e576318"
+      "sha256": "5cac1f9095a9e5cf3a0d05b431739c0e13d675e75ef4da85681f51b442ff343c"
     },
     {
       "bytes": 22762,
@@ -513,11 +553,12 @@
     }
   ],
   "parent_publication_manifest_sha256": "c453061027a30d493782cc7e7b4f7a4d7c269f55d322e250dae34c75b5c35a9d",
-  "preceding_publication_manifest_sha256": "ca370abd29e10382981709835dae8a7b2674bee9822fd7ef646b306baef7b065",
-  "publication_scope": "Functional and input-frame figures, supporting active-frame diagnostic, and a focused fixed-GPT-logit full-rank ALiBi control. Other withdrawn comparison exports remain excluded.",
+  "preceding_publication_manifest_sha256": "93da31b1b4c6e3d665ca0e5d76d0f799a14340defe9e1201bcea1b8d54e32814",
+  "publication_scope": "Functional relative-loss/perplexity and input-frame figures,Q/K subspace-overlap table data,and focused fixed-GPT-logit full-rank ALiBi control. Other withdrawn geometry and comparison exports are excluded.",
   "retained_figure_exports": [
     {
       "manuscript_figure": 5,
+      "scope": "paired relative prediction-loss and perplexity changes plus unchanged stable-rank summaries",
       "stem": "p1_functional_loss_spectrum"
     },
     {
@@ -528,29 +569,36 @@
       "manuscript_figure": 10,
       "scope": "fixed GPT-2 logits; full stable rank and erank2 only",
       "stem": "alibi_full_rank_control"
-    },
-    {
-      "manuscript_figure": null,
-      "scope": "supporting diagnostic",
-      "stem": "audited_geometry/active_frame_audit"
     }
   ],
   "schema_version": 2,
   "scope": "Reviewed sources, vector figures and compact plot inputs; no private run plans, credentials, weights, document text or raw JSONL.",
-  "source_archive_scope": "Current canonical contents for the preserved source allowlist plus plot_alibi_control.py (38 source files); historical utilities do not define current figure exports.",
+  "source_archive_scope": "Current canonical contents for the preserved source allowlist plus plot_alibi_control.py and analyze_relative_loss.py (39 source files); historical utilities do not define current figure exports.",
   "upstream_historical_manifest_sha256": "d8c997d153b675796e52ff3783ffa2b095285f239752c6522ca16838d6078eb3",
   "validation": {
     "alibi_data_unchanged": true,
     "alibi_documents_per_cell": 32,
     "alibi_rows": 18,
     "focused_alibi_only": true,
-    "functional_rows": 36,
-    "functional_rows_unchanged": true,
-    "geometry_rows": 73,
-    "published_vectors": 8,
+    "functional_documents": 32,
+    "functional_numeric_trials": 6912,
+    "functional_rows": 54,
+    "geometry_rows": 61,
+    "input_angle_rows": 57,
+    "published_vectors": 6,
+    "qk_overlap_table_rows": 4,
+    "recorded_functional_losses_unchanged": true,
+    "relative_loss_final_head_cells": 24,
+    "relative_loss_layer_cells": 18,
+    "relative_metric_replay_exact": true,
+    "relative_perplexity_final_head_cells": 24,
+    "relative_perplexity_layer_cells": 18,
+    "retained_geometry_estimates_unchanged": true,
     "source_zip_verified": true,
+    "subspace_overlap_only": true,
+    "withdrawn_concentration_rows_present": false,
     "withdrawn_vector_files_present": false
   },
   "version": "retained_functional_geometry_focused_alibi_release",
-  "withdrawal_note": "Earlier completed full/cross-cut and combined mask/feedthrough figure sets remain withdrawn. Only the focused fixed-logit full-spectrum ALiBi control is restored; historical data remain archived separately."
+  "withdrawal_note": "Earlier full/cross-cut and combined mask/feedthrough figure sets remain withdrawn. Active-frame coherence,fourth-moment,and leverage-concentration exports are excluded. Only the focused fixed-logit full-spectrum ALiBi control was restored; historical records remain separate."
 }

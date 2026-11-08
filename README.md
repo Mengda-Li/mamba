@@ -33,11 +33,13 @@ The former also retains the original small comparison CLI for diagnostics.
 
 The supplemental sources in [`rebuttal_experiments/`](rebuttal_experiments/README.md)
 run from this standalone repository. The current rebuttal publication retains
-GPT-2 value-path interventions, trained-frame diagnostics and the focused
+GPT-2 value-path interventions, input-angle and Q/K subspace-overlap diagnostics, and the focused
 fixed-GPT-logit ALiBi full-spectrum control. The earlier full/cross-cut and
 combined mask/feedthrough figures remain withdrawn; their plotting data and
 vectors are excluded from the current release.
 Historical analysis utilities and results remain preserved separately.
+Coherence, fourth-moment and leverage-concentration diagnostics are excluded
+from the current publication export.
 
 The audited vector figures, compact inputs and replot commands are in
 [`rebuttal_artifacts/release/`](rebuttal_artifacts/release/README.md).

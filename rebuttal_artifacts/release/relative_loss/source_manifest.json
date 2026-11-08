@@ -1,0 +1,608 @@
+{
+  "config_id": "bcc1a448a8af5d402d9e",
+  "csv_sha256": "99f59a899e1d9e1b90748513924525ef7580e2789df7781b4c82e7a50936c53d",
+  "export_scope": "Recorded numeric losses and opaque trial keys only; no inference, GPU jobs, text, weights or hidden states",
+  "fields": [
+    "config_id",
+    "checkpoint",
+    "checkpoint_revision",
+    "input_condition",
+    "document_id",
+    "sample_id",
+    "length",
+    "layer",
+    "head_or_channel",
+    "intervention",
+    "native_loss",
+    "intervention_loss",
+    "delta_loss",
+    "native_nll_sum",
+    "intervention_nll_sum",
+    "loss_token_count",
+    "status"
+  ],
+  "gzip_sha256": "01e1d9998cc7c1ee7c9cde87838ba577798f2c8eadbe6796574a39f30d07a536",
+  "public_path_scope": "Source basenames and hashes retained; machine-specific path prefixes omitted.",
+  "recorded_source_manifest_sha256": "22f7cf9bbfd1fba541d4fa2d1099ec5e189d636ba6283da31e9d97076f0bc183",
+  "rows": 6912,
+  "source_files": [
+    {
+      "completion_sha256": "c0491ee6a1953513a6a179514b59c7f4c99dd59fd4776e6933200ee5c640f843",
+      "metrics_path": "wikitext103-val-000-a01c8bcf1c06__native-prefix__L0256__90705f006219.jsonl",
+      "metrics_sha256": "9ae4307f9f9aa4e7f27489dccd122d8ac6e44f3b02344b1b6b769f60f4a00abd",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "67f9c540e49cafcc42102f1f84c10ef8f420b0e690ca6621d0ff9d4151af4813",
+      "metrics_path": "wikitext103-val-000-a01c8bcf1c06__native-prefix__L0512__bbaa8e4ef678.jsonl",
+      "metrics_sha256": "d785a7bb8e9a20a4b1f52dc57b363bb67289b54241986fa275a5528e40ff6e8f",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "bf1389b510d77c64589242db528c87e9ef0826f361ac60bcb1a24ba5a0ec9bf6",
+      "metrics_path": "wikitext103-val-000-a01c8bcf1c06__native-prefix__L1024__e5368ebc25e7.jsonl",
+      "metrics_sha256": "ed2ea97f8dd05e0e47f054215c47ff54552c5ebd53f621b657cbcfc578e0bca8",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "f659e2d299edb611ce348b8a346f39ec05c00426b14ed58829310a27e4a27a10",
+      "metrics_path": "wikitext103-val-001-bcd7cd5d10df__native-prefix__L0256__8a3ada6d0658.jsonl",
+      "metrics_sha256": "35790757c4b3ef5fe5f8f773884f00fd6ea2304b1ca4802e8afc066e492e3be8",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "8f1e08db1a017b96d19e1b44fed9247c598f6ab4f362bcbc867dc4effe41a89c",
+      "metrics_path": "wikitext103-val-001-bcd7cd5d10df__native-prefix__L0512__b0473b2991bf.jsonl",
+      "metrics_sha256": "bd10ca38ffcefba0c14a332bb4fd426df47a014667f43d7ed262b945a5572d64",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "92248c2522f53ee697f90b75dbe1ff3d2ff8215e838edf7ffad30f0dd579981d",
+      "metrics_path": "wikitext103-val-001-bcd7cd5d10df__native-prefix__L1024__d4521a2e28b4.jsonl",
+      "metrics_sha256": "7c2797e7cb282272cc0889e2e31ab4ad979fe2913b9d5d0802ee3ec0ef1cd49a",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "c54518f1462a1d2a2a17494ffb5caf68be1adfebd66c7ec11620e2ba97ea9494",
+      "metrics_path": "wikitext103-val-005-243a1b6f589d__native-prefix__L0256__3429737a9a9b.jsonl",
+      "metrics_sha256": "8f7b708aeba211ab3b465529bf5f0bd384c1f3cf65f8636a0e30bd5a412a9404",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "2aafc81b388dc10a13faa2d310e2066f48095675c93905126ac0f83920ab939f",
+      "metrics_path": "wikitext103-val-005-243a1b6f589d__native-prefix__L0512__3f6fb982d198.jsonl",
+      "metrics_sha256": "1c0d5e30efaab13b546571931469bbb195b70c800ab735c4818049942c4afcc7",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "e80252234d7cfb4e9bbac3da77cc84d5537ecc4ab6788c2573a0a93c2116a16d",
+      "metrics_path": "wikitext103-val-005-243a1b6f589d__native-prefix__L1024__7523cc44be09.jsonl",
+      "metrics_sha256": "84c163a20d04168cc158cb8596f7d976e80adc53a4adc107275341bbd535fd48",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "564ba423e498b7ca5b75eca2cb610039599204cc40153250af629386c2069180",
+      "metrics_path": "wikitext103-val-006-f11278fc6230__native-prefix__L0256__e074357ceae7.jsonl",
+      "metrics_sha256": "baeff53833ea0f47197004db22546ee683133435233c88ff355a992f3aeca914",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "2081ae6ff3e2452bc28050f03b62116b0fe72c920a02457398c5e07fd5a2b64e",
+      "metrics_path": "wikitext103-val-006-f11278fc6230__native-prefix__L0512__fad6311dc94d.jsonl",
+      "metrics_sha256": "d723a4a8d5bcc902d488473f8ffbca3fe341461813a33f2426abe228d236408c",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "5679efb285439095c9bc76422bf4fb78e97b835614abbc7e2e74e3d986afe442",
+      "metrics_path": "wikitext103-val-006-f11278fc6230__native-prefix__L1024__1eb18a28963f.jsonl",
+      "metrics_sha256": "cdf51fb8417d5065b8efab5933346a9378474cd87f301382b8af053dcd1343bc",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "f3acde3395544e14babda84bf9040e75226b96c72822ad271ccf73f4830d7ac9",
+      "metrics_path": "wikitext103-val-008-92935153b414__native-prefix__L0256__5f7b969420ec.jsonl",
+      "metrics_sha256": "de65227ac1899d8d64f689321d405244a88427e8dd38b3b474f8355674d9bf8c",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "4bbeaa3ccfb066fcf8c7227118ec861a34ea58a74e23ae3ffc984c7548025112",
+      "metrics_path": "wikitext103-val-008-92935153b414__native-prefix__L0512__b1448a3967a0.jsonl",
+      "metrics_sha256": "6883ed759df5f1b25dc61650dd9faa0f9715e5980cf78f2c64ec52b9caffd9f9",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "5b3732d2b7759e324ecf92478adcae3d24497e032690e3fa596673cadaa1ce9a",
+      "metrics_path": "wikitext103-val-008-92935153b414__native-prefix__L1024__123509092c05.jsonl",
+      "metrics_sha256": "e145e79e5dbed1fbfb5232ca9bbc4147a339868b8170be30c7018b3af751d6d9",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "834a4987f958b3c4e552c12f136ec6f46f101302d04a4ed47f85ed11ae4ee405",
+      "metrics_path": "wikitext103-val-009-920fa2fbaeb1__native-prefix__L0256__b88e258029ae.jsonl",
+      "metrics_sha256": "0f2680b4b67759f3764dd63a9d4b59dc499b56f8aae2e88daf60bf9328d3109b",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "14b9653d567de88da18384cc03c9ba42a84dd45e0a49988643f8aa186f0025fa",
+      "metrics_path": "wikitext103-val-009-920fa2fbaeb1__native-prefix__L0512__819714ccb5e9.jsonl",
+      "metrics_sha256": "d39b6c455b6c1b3d4e7752d61959226306236bf37e7828304d2ffb2006381b2a",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "e4c2effa23d928cd7f32d7ba2a6bdd5594994440fbf7f3a5c1ee320c3e59c621",
+      "metrics_path": "wikitext103-val-009-920fa2fbaeb1__native-prefix__L1024__409d23725a8a.jsonl",
+      "metrics_sha256": "daf1a8ea895be8b75ca0ae7b0d1192cdd2dfedeb6e7863c8a90c9cd27ac725b3",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "ed27cca7ecce1b77516861c7fdf24fcd8b6d997e49417f4e0e266d1e9a79938b",
+      "metrics_path": "wikitext103-val-010-5b920f0a95bf__native-prefix__L0256__a2d903d0f2a3.jsonl",
+      "metrics_sha256": "23120d4918d9f070afe0973fa155a93ac074bc7af4bc55bf78e75b421ac34e8b",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "8d1ea5c18832aa4bf76d477a812ccfcfa6a85c85532bc0932d2f122c42870014",
+      "metrics_path": "wikitext103-val-010-5b920f0a95bf__native-prefix__L0512__fb65a54bd472.jsonl",
+      "metrics_sha256": "4841c3831f4dd41cc7dd91f9f3fc85c1238ee2d4c95f55cf5f6ab5b1f56386e0",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "b94d282221a7f89797f194ca1fff903a1bc5a5100386309209ef4d1276ef9386",
+      "metrics_path": "wikitext103-val-010-5b920f0a95bf__native-prefix__L1024__10c7abe67d04.jsonl",
+      "metrics_sha256": "1445ae34ced936e26cb62bd4f34fff3e5f57fa4f15803e15c84118ddcbe8afaf",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "3ea512818d2fc1248c4be04b15cf0a5fabe513d8a6011ba75b69723dc3a6e8b4",
+      "metrics_path": "wikitext103-val-015-334521c33f22__native-prefix__L0256__024e6c167d4f.jsonl",
+      "metrics_sha256": "7742c64c6cd1dd754f393311e603856362ae9c1f488484a3450b8c780ea89b28",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "c97fe977a553ba98999110df6156b937f052f51b4ab0ffaf739b9937769b358c",
+      "metrics_path": "wikitext103-val-015-334521c33f22__native-prefix__L0512__100b22fdcd92.jsonl",
+      "metrics_sha256": "f3dab95f325754b5c9bd61d0d1c3bfc3caddb6d1543001baab0be8f908d32272",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "dd0c0c1748967d3d505d0326d5a56e8fb5a7fe9c920d9b3be21b62172797034f",
+      "metrics_path": "wikitext103-val-015-334521c33f22__native-prefix__L1024__7948f54905c8.jsonl",
+      "metrics_sha256": "4a5faa51c7dfed62d62fb80ebf0755452420493b3d66f7bba568c97a07bc2bac",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "898503050a0c1e3d3810779e117be6bbc805b2a2843509cd881a735def24fbf9",
+      "metrics_path": "wikitext103-val-016-b9e3cb55c6db__native-prefix__L0256__0ed6e2493cc9.jsonl",
+      "metrics_sha256": "e9f0ce9517f785973af874fa2febba614131f89ef27455c42463720e41c7d43b",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "67ce9c54b21eefab989882ac8e53958ea9118e65b03035c50004f4f535100c49",
+      "metrics_path": "wikitext103-val-016-b9e3cb55c6db__native-prefix__L0512__716bee7081eb.jsonl",
+      "metrics_sha256": "9912476556611bc4d7abf6f538e12add3277aebb9f150ed89ca75268ac11a556",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "43fa1a54183c99e6903a36457a9f613bd9bd42d35f06c9516ffd0c9938d95c66",
+      "metrics_path": "wikitext103-val-016-b9e3cb55c6db__native-prefix__L1024__383d3f215044.jsonl",
+      "metrics_sha256": "e3242e92947f7a07536e0f8b9a420b609bd992e5ee6f550651fcd04330378dde",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "803f89328507638205ab41b5bc32a9687b92b0bf828f8ef4bb6d9d95c3cfe51d",
+      "metrics_path": "wikitext103-val-019-986596f97a78__native-prefix__L0256__6f52f1d2ba72.jsonl",
+      "metrics_sha256": "6a489408f0f6dbd58bf268ee1ec9c5fb438ae4bf926b9eeeaf55f179c28b697b",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "22f512cc976d4b915424bf15e0f898531441e22a7a4e250d35abac97399edc3a",
+      "metrics_path": "wikitext103-val-019-986596f97a78__native-prefix__L0512__88f86d16d6ac.jsonl",
+      "metrics_sha256": "57ee50831a04de0313d4955de5f435f9c82de4e3b550bffef9ba8f7babe555fb",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "5d696f5678813c059aa992775039aacb5440e7004d7b19fee8c528b7aae796de",
+      "metrics_path": "wikitext103-val-019-986596f97a78__native-prefix__L1024__4807432dafc0.jsonl",
+      "metrics_sha256": "d15a87abb339e900e8c79c67a0a1cac9e5cd31dc5f59ef1f0efbbb98f9437058",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "ed6a8918a6b351fe85b9f40ddba441677b9fbbfc755e6ab40b10128acd8c22e7",
+      "metrics_path": "wikitext103-val-020-b206a5b694bd__native-prefix__L0256__eb0ff671a5de.jsonl",
+      "metrics_sha256": "c6a90b38e61c20169fa904ef9c9f67c4f94268d6f9acf87428da16481db47693",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "c2bc437a10efb3495ce47a1fb9ea3e926d3bce991705769d40903417a59cf7f1",
+      "metrics_path": "wikitext103-val-020-b206a5b694bd__native-prefix__L0512__7715ce789c58.jsonl",
+      "metrics_sha256": "f77ee9c781f034bd3fa4e2b9bb8a58a4d638359589e727ed41a7c1f0724bb1e6",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "0078eb6851ebce23bdea13cff2f16980d6ecf857975d1feddd3154bbca3881d4",
+      "metrics_path": "wikitext103-val-020-b206a5b694bd__native-prefix__L1024__bee7af03aed7.jsonl",
+      "metrics_sha256": "fad3c2b40f00aed2a8702cb5fe4ced0468f4b53b444f2c945034d40e5f221124",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "e13d3264ebd321a00e0b31f6acd8fbbec698100d4f497fd7f7288c70afed3145",
+      "metrics_path": "wikitext103-val-021-4c739471fb49__native-prefix__L0256__79e2dd0ea99a.jsonl",
+      "metrics_sha256": "ffda7961c6a01a3ef3c0b93cd67d2e4689638c8e3a7a7b743860939a8ab63be9",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "0714a1ba58ca39c14ee0f3169720ac3bfb33b1ab8e0e7cbd0ccba79ed50bb61f",
+      "metrics_path": "wikitext103-val-021-4c739471fb49__native-prefix__L0512__19a61385977e.jsonl",
+      "metrics_sha256": "02de91360bc3ea9dc35a31ab9373a64f2287407156c217bbc817fc1d7e05a91c",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "780aa435d0f63c3f5a847e0831e6fb678b9a25f8ea3e2e124ec6b1fa34d473b9",
+      "metrics_path": "wikitext103-val-021-4c739471fb49__native-prefix__L1024__1ac524450700.jsonl",
+      "metrics_sha256": "5fa3deba4ad137a598555c1f25c1904b971cc09d9b3d92732cf06fb456aed444",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "b0082f973b4c61a8fbc06e4de961120105b79a11cad6e0586c6740c68ff5d78c",
+      "metrics_path": "wikitext103-val-022-945e4b131fa0__native-prefix__L0256__b6087cbbe5fb.jsonl",
+      "metrics_sha256": "fb3aecb193f41270461c6e31fa2e416207ce5e6b0cc0a5bc76aea645420a4592",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "552d21bbde9c107c80274450f834fd89c2c96c9bea2f07ac6cbdcf020db6f52d",
+      "metrics_path": "wikitext103-val-022-945e4b131fa0__native-prefix__L0512__34b0df497aff.jsonl",
+      "metrics_sha256": "183d0c9bb911b424080bb920aa595217648b1017db5484a57932d9313a936f72",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "1a12cdf65286fa719cc6532b4d15f735aa72951d8fede525764d14071a15d807",
+      "metrics_path": "wikitext103-val-022-945e4b131fa0__native-prefix__L1024__cf968bace130.jsonl",
+      "metrics_sha256": "78818481ebec0eb86aa4ad9ba04c322f25b3c3ddf5cb16fe6fdc6c4a3e24ce9c",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "76a3369f29eea5dde65c81dd7e58a62dad9d01769499845207f84ae9020d8b29",
+      "metrics_path": "wikitext103-val-023-2e1822007617__native-prefix__L0256__c77042f05dde.jsonl",
+      "metrics_sha256": "6177145e444707209d716e99b93d3d8738c8cc2577a38d3eaa126a45072558a4",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "055a9b9f33ff88db7621f648db1272f5d807cb52599834bf417953f6861e5e30",
+      "metrics_path": "wikitext103-val-023-2e1822007617__native-prefix__L0512__76a1a4e21db1.jsonl",
+      "metrics_sha256": "7b7e1cebf8f705d0fd68ed832b832107a0aadb45abb37a1557ddfa6e951e4d7d",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "c61c093167cd46373a5e93c1a1e16cd613256bd3e622e5d5708f02a5cc1f81be",
+      "metrics_path": "wikitext103-val-023-2e1822007617__native-prefix__L1024__99646ec3de5b.jsonl",
+      "metrics_sha256": "d3306e44a6d27b9103b1d321bd04d15db5f98b051760c206076211f717014ff7",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "d05c00dbfd56544ff78d535892418e81a0a76d4f0aa6db7f2cdca0170b84d059",
+      "metrics_path": "wikitext103-val-024-8b58260bee19__native-prefix__L0256__0182ffeb8bba.jsonl",
+      "metrics_sha256": "f25b576fe797e56487689fe79f565ca00e4b27003fb187fc861e826a6491c3b8",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "4eb50e2f1ee19a3f5abfa99066332dedffb7223a005e647a2029c1795982f1f8",
+      "metrics_path": "wikitext103-val-024-8b58260bee19__native-prefix__L0512__ab61603027f0.jsonl",
+      "metrics_sha256": "5f77f4aaa0145d6d0b8129e79cfc81251d64235fad83eb57e2ed129f0e8d56cc",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "fbd61f94b9f15b074bdef767736038b1f19d4b23caa58cb4fe41783d53990936",
+      "metrics_path": "wikitext103-val-024-8b58260bee19__native-prefix__L1024__97515b21953f.jsonl",
+      "metrics_sha256": "292f8593c4a153567894716c8ca2ff76eaf2ac022a375d827188c29bc60c028a",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "462a6503812978923fcac2b08640ab848a14381b171d1bab2b6dd976a3536009",
+      "metrics_path": "wikitext103-val-025-e87cb38cc71e__native-prefix__L0256__b903575a7eea.jsonl",
+      "metrics_sha256": "b5a36a8b9b3ecd1b529a3133401c7705609bdf46382b8c28208085e294808501",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "8cd0793a51f21fb40fe357fbde73dca66457bcd7351b4ded42062a56dc7817c2",
+      "metrics_path": "wikitext103-val-025-e87cb38cc71e__native-prefix__L0512__5c7ac1dc5685.jsonl",
+      "metrics_sha256": "cc9a5ccff7e0c8ebb1ff445d15e6d6b18cccf7bd80fa2259cc90e7f2589d7856",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "227887de4647a2427a99ad4b03d9bd4dd9cc562380826a7b21c6bf16f2c026fa",
+      "metrics_path": "wikitext103-val-025-e87cb38cc71e__native-prefix__L1024__ce6305927312.jsonl",
+      "metrics_sha256": "75e4b16158f14fec7e199e109eed8b107ee33ce3ceef5a0b5e88f4c9a094355c",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "e6d12ee8be0e3bfa83ec6613ecbd6c62473eecd63f2c4e7529fd373e68aecdb9",
+      "metrics_path": "wikitext103-val-026-b8228eae96bb__native-prefix__L0256__6fbe61b704ef.jsonl",
+      "metrics_sha256": "db4a760e25471a4b9c221ec2df4f60be726c5ff7493ade450247b39115fe904f",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "a52d2d9d06605c9074909bba80ec2bb55813773f310de686ee99b365ffbec53e",
+      "metrics_path": "wikitext103-val-026-b8228eae96bb__native-prefix__L0512__5c08fb7d7ea5.jsonl",
+      "metrics_sha256": "71ad22b06f384e8df49bdd5421a3a6aac5ec9a9a0a7855d455ef24efab52794a",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "082882294f04253cfaf8f468665557cef9fadebe19e135688a4fdc574870ba45",
+      "metrics_path": "wikitext103-val-026-b8228eae96bb__native-prefix__L1024__d5008821acad.jsonl",
+      "metrics_sha256": "8701916aa520da54890499069699d5214e86a647811a96ce288e46520a88f81a",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "965bc9e80fa7a9505df7d2b475062a6693793b6eea87f72218e858fe64b74c6e",
+      "metrics_path": "wikitext103-val-030-b983776e8409__native-prefix__L0256__fc6c23d0cdad.jsonl",
+      "metrics_sha256": "9456e487d0a1e540214e0a7e8a6e0d2c021523e0a777715fff58ad184d373c97",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "7bcf1a86f9a58b3aa93a8184e2f0c05ff21f24986f06f7c65bc8708426d2e4b7",
+      "metrics_path": "wikitext103-val-030-b983776e8409__native-prefix__L0512__19d62283bfdb.jsonl",
+      "metrics_sha256": "b632b6fcb505fd73fd78c178a3ede43f5319e33235f4d72d9cbac121ab8b58db",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "62b19f1618702316c06646ed9f0a4e84963fc95626e18b1bedbebb18274e7e55",
+      "metrics_path": "wikitext103-val-030-b983776e8409__native-prefix__L1024__56031b1b7b02.jsonl",
+      "metrics_sha256": "16d73831ddfc6435a60776a30fff4d99c71042fee9db443f4622a1db429f0217",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "cbf77d00d17b3af09c7ab1b4d74c9fd41d05a3b766dab957c64eedd0c13e6f9b",
+      "metrics_path": "wikitext103-val-031-d7bfeb0406c5__native-prefix__L0256__92e4d14c8f6d.jsonl",
+      "metrics_sha256": "ec8bd5451c165d04441dd5f53736798b7aae603844c6b417250c514be01117db",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "c35b0608b7ddb4cb95c42d594e36d78e79df5f5b57a9a6bc8fe5115fed34d014",
+      "metrics_path": "wikitext103-val-031-d7bfeb0406c5__native-prefix__L0512__e0c874bcfa7e.jsonl",
+      "metrics_sha256": "49690c8db9f69b5aee5e4afeaab3047d9bf78a622f879f4c6e8cca7900c6b29d",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "2ff0fcdee5479f33a4a8955d5d9fd1e75ac1d792a39576411527044a03133a9b",
+      "metrics_path": "wikitext103-val-031-d7bfeb0406c5__native-prefix__L1024__0edf026ae07a.jsonl",
+      "metrics_sha256": "d829a99b2518ddf6591662cf6b8b970be34ab136f8393afa000e1f7c130ccbd3",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "6841db9ac4adaa01728b9f43d8625bf8ef897d1b1f77d4c3c584bbcbc3e527c2",
+      "metrics_path": "wikitext103-val-034-7292c69652a3__native-prefix__L0256__1a270d1a9e22.jsonl",
+      "metrics_sha256": "7d052e4c04e1813847847fcd2c58c20fab4c16de7a05183a478ddb6e695ae239",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "5130fb9082deb865c1fd56f3c15ff255639621b65931d68d4ad1e868e85773db",
+      "metrics_path": "wikitext103-val-034-7292c69652a3__native-prefix__L0512__13299348e4e6.jsonl",
+      "metrics_sha256": "c660af3c84325a6cc82e9ca2a72d57ba5243e3ebc2267734193079ccca9333d0",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "5f088a4b67bd93ea86570b47a46d14c9368d441f5707c1a05e6fb6de7a2a656e",
+      "metrics_path": "wikitext103-val-034-7292c69652a3__native-prefix__L1024__644b8ed776f6.jsonl",
+      "metrics_sha256": "a2a7f3843d47cb76e35c463db7fb2eb755151f4b29f40b2ebc1582c423299ef0",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "b7d22a4f663f90b10ef0a2bebfb8f1544e21447a078ca1f42e32b49bbd3d61ed",
+      "metrics_path": "wikitext103-val-036-8da1034b39c3__native-prefix__L0256__f917c148b84c.jsonl",
+      "metrics_sha256": "a6ae42359ab54c779037d7b16171842d6f7c13f7b9683c2d9a0eaf333adb2cab",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "888ddf162dd09080e53ad70fc2a657731c2088d9115195888787ccb8e71ee4f6",
+      "metrics_path": "wikitext103-val-036-8da1034b39c3__native-prefix__L0512__79be049f1891.jsonl",
+      "metrics_sha256": "e86add055e960c217319219a40a7a83deb675e0b3e464c62be529a3ad81a913e",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "7ae50135ba4b446ed3709e228922082f84ad905e9412a71c7646a7b95298960c",
+      "metrics_path": "wikitext103-val-036-8da1034b39c3__native-prefix__L1024__a4e294201e84.jsonl",
+      "metrics_sha256": "83fe382cb863990990a2cf3123204faeb81f3c76e6595f5bbd793d67b03c036e",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "c164d1ae41902b4377b21f8c1b26c5a008b42a75cc7cd311ec170d52b1f6ed92",
+      "metrics_path": "wikitext103-val-042-74185841f1ae__native-prefix__L0256__c16d5a6e6336.jsonl",
+      "metrics_sha256": "f8096411d40756c31228626736a30e9bacb3bb3b942b4598b877e5141290a04e",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "0d42f446ad61e0965e6dab0182aaa118a1ed38abc6ca839067b8316205d14306",
+      "metrics_path": "wikitext103-val-042-74185841f1ae__native-prefix__L0512__d174d423fca1.jsonl",
+      "metrics_sha256": "006147a1c68e5cf4b3761ec2c66417fb441358d895a2aa0ea4e1ceaf5c228dd8",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "5290aaa307abdf8d378719f0826249188637bd4b757c943fa6413f2dd66f7969",
+      "metrics_path": "wikitext103-val-042-74185841f1ae__native-prefix__L1024__20e7fbfe9f35.jsonl",
+      "metrics_sha256": "18448e15301e0a41e8847972c3337bb31484ec0cdb63a8721c57b72683a13ef8",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "400ddb29fb57b6b09ed7e8ca2afb17000106002c1bc0e8034434dfb35f5a7e44",
+      "metrics_path": "wikitext103-val-046-236deae3d8fe__native-prefix__L0256__02f6ff6ca575.jsonl",
+      "metrics_sha256": "f3c39819d3ee7ea191c14542d1d4d29e6883e860971ec3d505b23aa77a4d5983",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "29d211c34649719a9a1b6419873bbaced66dfaed49b6537e24d1206b5b87fa90",
+      "metrics_path": "wikitext103-val-046-236deae3d8fe__native-prefix__L0512__d5c568d8f5d6.jsonl",
+      "metrics_sha256": "5636dd4d1df38d801cf5adbb88ff5dea38db4b2f5b9d315699e99122039c61fb",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "b1a6496578f7a6c74a5e76360d7bf50f0cda1833fdaa3421e5f79bc2f1d778ce",
+      "metrics_path": "wikitext103-val-046-236deae3d8fe__native-prefix__L1024__72fdbeca47d5.jsonl",
+      "metrics_sha256": "4cfc7cd2604215232ec7945d1bfe20e97527648474b40ce77791fd62b6c34339",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "fa2f075bce7bc2ce4eaaeff176b3b06bd20ecbf266a293607a62afeedca84d06",
+      "metrics_path": "wikitext103-val-047-744b2ccfe894__native-prefix__L0256__84cd54070191.jsonl",
+      "metrics_sha256": "9da515e32980b05f57b2671a96a8f3b17fa3b5858c8dd03631df0383b5443c3f",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "4c3001e8feaced1c43a7489a1f410938502cc8555a7da6190926cf80cf0a26d6",
+      "metrics_path": "wikitext103-val-047-744b2ccfe894__native-prefix__L0512__b61c43a2641c.jsonl",
+      "metrics_sha256": "e6d781f39dc9eb8fa8b7e79c24d440a4534e8afabcdaa3144d86a64d6a023c70",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "a3c0a7687c4aade994619085376c1a29e938e8634df418f7a45d008320ae2e9b",
+      "metrics_path": "wikitext103-val-047-744b2ccfe894__native-prefix__L1024__5c0aeabc14d2.jsonl",
+      "metrics_sha256": "3a7166d7357c046f0a9a04ee58b5c7aabd19a73737ee7e896dafac65d4663a81",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "a3ea757372559f7b6b82f3df9e959bc08b75cd39c3a508c63d34da14148d30b6",
+      "metrics_path": "wikitext103-val-048-1129b2f472e7__native-prefix__L0256__458a499b1fb3.jsonl",
+      "metrics_sha256": "53c74a7465afc4de7a4d8b5994392f48e8e125cf8e9d6fc77dd5adaf7a4428df",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "8022ea4f8d0fcaf5b66af6b3ca2b3d3e3e0865f6a0c054f7e56421b830c1765c",
+      "metrics_path": "wikitext103-val-048-1129b2f472e7__native-prefix__L0512__ff0006d46c59.jsonl",
+      "metrics_sha256": "4255744f155a1a372dd45200b28b40ddbc58acf93bebdfbadc14d3d4aaaf72b6",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "d48142733431aa1a74e05b1dde69cfd4fef1fba9987d984b201b55591bb0d6cb",
+      "metrics_path": "wikitext103-val-048-1129b2f472e7__native-prefix__L1024__e328fd7da9ef.jsonl",
+      "metrics_sha256": "17d22da320ee684ecd5a9b2d18d56aa0dd249376a037cfd3d88de8a461b87078",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "9314e22daf1cd6b69775007390b1765c6bb3ad965822d4f9c7183d8392d86f8e",
+      "metrics_path": "wikitext103-val-053-d65179bf366b__native-prefix__L0256__7e3630eb2da5.jsonl",
+      "metrics_sha256": "2b7a68363eb9baf018659e6aa0c3cdf09c93772cbc05dfe4db226a5c1b686c0c",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "d4cafbbfbfe2518ebb33bc0d2e7a3a46505040bfcc41be6371ed2c98977a5b50",
+      "metrics_path": "wikitext103-val-053-d65179bf366b__native-prefix__L0512__67bcd8e0e74b.jsonl",
+      "metrics_sha256": "f562db9ea5b8b2442f59d70652d8c5cd93ea4155cc9f131cc218cc34b2c7035b",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "5e672697edae8691fe47434129219758b8f5a3d4fb54a019635d09869f99e7cd",
+      "metrics_path": "wikitext103-val-053-d65179bf366b__native-prefix__L1024__096427d5a020.jsonl",
+      "metrics_sha256": "95ce7fd3a5749a5ecd38767ada8e2601a3a180463a536f6030c5d48ac3323e44",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "ea14521d1bfa1079e4de73261ad536ce1e2c07db0222ef8254d257931b37b80b",
+      "metrics_path": "wikitext103-val-054-6565d99cc795__native-prefix__L0256__8a35d16d7ede.jsonl",
+      "metrics_sha256": "02ceee3752840c81a86c3a74e00ef3d71be0fa7b286f75040dc6c1e6c5d99864",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "812e996ba855d32daf993f976d96eb6c96bdbe471f5ed433dc690ce4347fefbb",
+      "metrics_path": "wikitext103-val-054-6565d99cc795__native-prefix__L0512__94d717366f1f.jsonl",
+      "metrics_sha256": "250e0256ab436d4bce7860887ee63be9d2e06f9d460c5f5d04bf9679637c2b80",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "a03b23aaceb6af678ce14e0a29e0979f0f8ebb053950e79471c002bbe7ddf756",
+      "metrics_path": "wikitext103-val-054-6565d99cc795__native-prefix__L1024__7242999eb289.jsonl",
+      "metrics_sha256": "918d17f35fa226cdf5f9741ec87d7ed6ec2b4022a54e8322a343fe935c2ab7fe",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "69a5228e598bf2fcb6953622d54f621544da03c4582e1b8c5754feecb2094632",
+      "metrics_path": "wikitext103-val-055-845b9fa64fd2__native-prefix__L0256__1b19bf33b87a.jsonl",
+      "metrics_sha256": "4619e96fcae0adac89731a142a822c72fd27201a8b7e417d4486b36ce83a8925",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "cc4fc99770b1993140427d785e3388f75dd5a59feb3f1684c83012cf845f247b",
+      "metrics_path": "wikitext103-val-055-845b9fa64fd2__native-prefix__L0512__415a007963a0.jsonl",
+      "metrics_sha256": "f2b18dff1439f1463c6d9bd39ef48ef1bad28cb62555150c9ad8d103bd6c7806",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "241121abeb1b8796f0cd53c9db759e0cad978014425af670da2bd74db671466b",
+      "metrics_path": "wikitext103-val-055-845b9fa64fd2__native-prefix__L1024__46bfd803ab16.jsonl",
+      "metrics_sha256": "3e2da8ebe622c338497f590667b09413054bab3388074147a14275f88e8c319c",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "455f2fb7261f2c6cc9f368bdd00763b72d3e26f0ecc1d57cd25d31aac3987879",
+      "metrics_path": "wikitext103-val-056-cf3e0a646dd7__native-prefix__L0256__ae18c8ef76fc.jsonl",
+      "metrics_sha256": "aa7be9fd4b6e1c7d39478a751d10137a1afc06be6fededa2ea983be4c76b121d",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "152c16ff4ff66f8062d678ca1eb98b67fbfd6bd683d80df34176583e1e53b462",
+      "metrics_path": "wikitext103-val-056-cf3e0a646dd7__native-prefix__L0512__84651ddaed80.jsonl",
+      "metrics_sha256": "5426ea94cb6b33984fc9cd3e09ec9ac942db079a7b4c917ea6bfdc29b5552df3",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "5d9c964f8da97ef03625122ebac43219476ea0761c9fb4039f6fa725296a2782",
+      "metrics_path": "wikitext103-val-056-cf3e0a646dd7__native-prefix__L1024__813bf31f3fe2.jsonl",
+      "metrics_sha256": "9e29ba4fe22f7b02624e48732132cdd7607d08df21a2d1193c4cc72aeffc2996",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "5ec6d853a9bbdf5c693ca0bec70f04d1dd39e273659402a83ffd02fc0654255a",
+      "metrics_path": "wikitext103-val-057-d5055389bb43__native-prefix__L0256__38f7961a9786.jsonl",
+      "metrics_sha256": "084aa7502e590b308edace317135098dd9500a4c791ccaac1c5549ef7f7f2147",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "5d171ce982f1d87ba64421b1487b966619fa1a5fe4022fa29ff040090bf6ae4d",
+      "metrics_path": "wikitext103-val-057-d5055389bb43__native-prefix__L0512__a697e96a4c45.jsonl",
+      "metrics_sha256": "4d3e4fd93f394a8ddfdb4ac6922d5e44749b9eaa7bb09c4b115ea489e225f4c9",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "f415ae28703d7ea7dc2e11875d882f256b6c97d8c7b4fcf1131bcb50122a65a6",
+      "metrics_path": "wikitext103-val-057-d5055389bb43__native-prefix__L1024__512f8ff74529.jsonl",
+      "metrics_sha256": "c2a2c6b70c4892d49aa16cffb1130045c03a73ee98e7bce625e577d62453a4b4",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "4aa278fb5a0a57f6900b2df19926f4971eaee0f219fcdc21dcb5a64c3450f0a6",
+      "metrics_path": "wikitext103-val-058-9968b692d909__native-prefix__L0256__c6d541c675aa.jsonl",
+      "metrics_sha256": "92ae41f21453ef025ee239c0c874739e66432ab490a929c27fcf953668789aed",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "1dd1727dc52e5417d00d8eb3713135cd3ac50163812b2e5dc25618a810a28f04",
+      "metrics_path": "wikitext103-val-058-9968b692d909__native-prefix__L0512__85d26d393738.jsonl",
+      "metrics_sha256": "88ea0f36691c621ab80f2b230ba3b05a31b30dd0d5a3380266c7683cbd4140c6",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "447cdff5b0cae121b63bd683b7a06caf2d4ad846fa728e0014476cc801954ca5",
+      "metrics_path": "wikitext103-val-058-9968b692d909__native-prefix__L1024__1753e5df634f.jsonl",
+      "metrics_sha256": "3a231588869abae9e6b9390fb9ade6499da0acc5f228a70428a6fb43c4c153d6",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "0702d1114d67630cc04d7f2b2600180834e5ee4059703013d5a98d38adcf7670",
+      "metrics_path": "wikitext103-val-059-1fb59c552ffb__native-prefix__L0256__3768cb19daf0.jsonl",
+      "metrics_sha256": "e939e096e08cfc53dd339af1f1cb1f062b90287d3aab5ae97552912700623ad5",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "ec87c471833175f155e47422f80886a9d6422197e42b2975887424479b98c4bb",
+      "metrics_path": "wikitext103-val-059-1fb59c552ffb__native-prefix__L0512__2c9c5c618e15.jsonl",
+      "metrics_sha256": "4fc4ccd1cca3a3bfc7c37e764135bb9d705c566e5fce989582b4a05b1f6fcdde",
+      "rows": 72
+    },
+    {
+      "completion_sha256": "137583ea98ef2ba964bcf82654dcb9f33a78f8758a28c06f4c0824fe023f0c05",
+      "metrics_path": "wikitext103-val-059-1fb59c552ffb__native-prefix__L1024__7816840ba92a.jsonl",
+      "metrics_sha256": "01117dc4b1dff348b94b0dbe021c8420f50fb07d7714f4a0c2a704cec94e7f13",
+      "rows": 72
+    }
+  ],
+  "source_run": "functional/config-bcc1a448a8af5d402d9e",
+  "source_samples": 96
+}

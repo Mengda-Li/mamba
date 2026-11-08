@@ -1,21 +1,30 @@
 {
-  "compact_plotting_rows_sha256": "f5c695952b3a05d6e1560cb9d07dddeb981486669f2f3eb9e4d03343bc15ae07",
+  "compact_plotting_rows_sha256": "33d042d363d296f38bf793101e7706c6ae86d1e3474b55bf9229db288b109b73",
   "files": {
-    "p1_functional_loss_spectrum.caption.md": "769dde9d8daadf9c8e856ec158aca94c0e428cf0e1e9c168a83f285c1d2d0b72",
-    "p1_functional_loss_spectrum.pdf": "86161096b6d1e643edc21910d9fd29fa4160780ef5644b960cf11c7d3ea1c4e2",
-    "p1_functional_loss_spectrum.svg": "aab46ac5a85bee151e3db7387f45773834992fd1731bcacb99d6629ae749c113"
+    "p1_functional_loss_spectrum.caption.md": "67a9de6ce11026c35a1ad4c9179df8e755a427e4de693292f5a5666ae81a7f12",
+    "p1_functional_loss_spectrum.pdf": "3b2a59dd10a7e50459ae1fad96d9b54b8cc08892fdf3172da6717a11449b2ed7",
+    "p1_functional_loss_spectrum.svg": "aec6835fabb6ca22f04415a7c1e9b01112302f858400e6170ea714589f126ee2"
   },
-  "layout_revision": "Shared context xlabel; redundant footer removed. Functional plotting estimates and intervals unchanged.",
+  "historical_producer_script_sha256": "43eb39d0a647dec873cc83be3000f6cb7168b3d549722bb4d7e241837e576318",
+  "layout_revision": "Three rows:relative prediction-loss change,relative perplexity change,and stable rank; shared context xlabel and no redundant footer",
+  "loss_display": "paired per-trial relative loss (%) and paired per-trial relative PPL (%); head means within documents, then document means; fresh paired document bootstrap",
   "n_documents_range": [
     32
   ],
-  "n_selected_plotting_rows": 36,
+  "n_selected_plotting_rows": 54,
   "parent_compact_plotting_rows_sha256": "957c5fd2bedc0c2e65ac26f20d0ecad43fd2e761606660e63e2b28892f11e6ff",
-  "producer_script_sha256": "43eb39d0a647dec873cc83be3000f6cb7168b3d549722bb4d7e241837e576318",
-  "replot_script_sha256": "24e3b78513f8fe2636035fed477d05f1b3a322d27ede74831fb3970e1fe8289c",
+  "plotting_rows_sha256": "33d042d363d296f38bf793101e7706c6ae86d1e3474b55bf9229db288b109b73",
+  "preceding_compact_plotting_rows_sha256": "f5c695952b3a05d6e1560cb9d07dddeb981486669f2f3eb9e4d03343bc15ae07",
+  "preceding_p1_manifest_sha256": "554e4ea1b1b30c20bacffe6198168a8d1e1ab0ffa4a14bd30a85a003d28fc94c",
+  "producer_script_path": "rebuttal_artifacts/release/plot_p1_release.py",
+  "producer_script_sha256": "8eb8a150256978192c86181b17ce4b47528ea428e118b1a46753706fca4ca275",
+  "recorded_numeric_trials_sha256": "01e1d9998cc7c1ee7c9cde87838ba577798f2c8eadbe6796574a39f30d07a536",
+  "relative_loss_source_sha256": "1f0875260ad47f18234155eb21a0f166dc7f1d12dbc8f788ac0b9c841590ff0e",
+  "relative_ppl_source_sha256": "fa559fb874d09d04b192cdd1d9400f15a15accf6a205c6a7ed313279a4fedf96",
+  "replot_script_sha256": "8eb8a150256978192c86181b17ce4b47528ea428e118b1a46753706fca4ca275",
   "schema_version": 2,
   "scope": "Retained GPT-2 functional figure only; publication selection from completed corrected results",
-  "selection": "rows with a functional intervention; all36 retained unchanged",
+  "selection": "54 rows:18 paired relative-loss,18 paired relative-perplexity,and18 unchanged stable-rank rows; all recorded head outcomes retained",
   "source_configurations": [
     [
       "gpt2",

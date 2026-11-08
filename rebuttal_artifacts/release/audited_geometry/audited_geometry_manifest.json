@@ -1,28 +1,43 @@
 {
+  "current_replotter_sha256": "07674e3177ded41fd3e7a65f78e71d19865d05fee6d04916616fa9585b8d0b91",
   "documents": 32,
   "files": {
-    "active_frame_audit.pdf": "37f8dca7180f200312af3abc52a472f6fae3758b1f43ecf462e1b47b1454e30f",
-    "active_frame_audit.png": "a8794023e57e1266fa0a28b091108be14a9924bf0d72e564f7e7d02db3162363",
-    "active_frame_audit.svg": "12d4447722182e1087e6040e9f2f1da53600ea760a8fe1ad145c5232d00db37d",
+    "input_frame_angles.caption.md": "a4d404189dd6d94842182d8d9b5e1cf8787343c165afd8e41ed81451f65bcfc0",
     "input_frame_angles.pdf": "8f4602edf6c5c5cc861aabcb41c3db585d706214f0456a7d4a219d7c00cea29e",
-    "input_frame_angles.png": "d46eb9c75d0c8b39a4eea1b9edc1550f547d577eadadeeae612f11a807073ccf",
     "input_frame_angles.svg": "e552fa10a99cdda302253902bba1bbd1eebaec12dcc073a33724ac04cdc293b3"
   },
-  "geometry_claim": "Descriptive input angles plus active-frame anisotropy and partial dependence; no Haar validation",
+  "geometry_claim": "Descriptive input angles and retained Q/K subspace-overlap table rows; no joint Haar validation",
+  "local_preview_hashes_not_published": {
+    "input_frame_angles.png": "d46eb9c75d0c8b39a4eea1b9edc1550f547d577eadadeeae612f11a807073ccf"
+  },
   "mamba7_runtime": "Transformers4.57.1,global gated RMSNorm",
   "manuscript_aliases": {
-    "active_frame_audit.pdf": "figure/rebuttal/audited_active_frame_geometry.pdf",
     "input_frame_angles.pdf": "figure/rebuttal/audited_input_frame_angles.pdf"
   },
-  "null_band": "5\u201395% variation across64 frames/pairs,not mean confidence interval",
   "numerical_rank_gate": "Every input-angle row has numerical_nullspace_columns=structural_completion_columns=0",
   "original_verified_summary_sha256": {
     "rebuttal_artifacts/frame_geometry/complete32/summary.csv.gz": "d5f1bb581f4f47101f903dc6e5eb35c259d90ca9f77c880cea4f2761dfc84883",
     "rebuttal_artifacts/frame_geometry/mamba13_complete32/summary.csv.gz": "b22bfede5f418e3808576c9df6c5196d74dec6d9a07a2a59588c48c3be2e672a"
   },
   "plotter_sha256": "314c38adfccf8ec8b0000e58a92f513cbd87cb8a9178795e66eddc0cbf39185d",
-  "plotting_rows": 73,
-  "plotting_rows_sha256": "b1e0b7dd7b1c58bf80dd12c843f03161f7c0e171c8beaa83e730e66ce7c81c32",
+  "plotting_rows": 61,
+  "plotting_rows_sha256": "2da9e2ec0eef041df932b35993b88bc8b49def34769dd27913ab7831ef88be02",
+  "preceding_plotting_rows_sha256": "f550de8b24e663ddb6fea3ebb3f433425dc563f359491603fa263445218c1610",
+  "publication_selection": {
+    "input_angle_rows": 57,
+    "metric_allowlist": [
+      "angular_w1_midpoint_grid",
+      "histogram_kl_uniform",
+      "ks",
+      "mean_squared_canonical_correlation"
+    ],
+    "qk_overlap_table_rows": 4,
+    "retained_estimates_and_intervals_unchanged": true,
+    "subspace_overlap_only": true,
+    "withdrawn_diagnostics_excluded": true
+  },
+  "qk_overlap_reference_variation": "Saved Haar-pair q05/q95 values describe variation across64 pairs, not confidence intervals of an empirical mean.",
+  "replot_mode": "--input-only",
   "source_summary_sha256": {
     "audited_geometry_plotting_rows.csv.gz_910e4197813e": "910e4197813e72fdf3a7f7748d97bb57a5f0782047a8ada1c8bf3ff597a9c0e7"
   },

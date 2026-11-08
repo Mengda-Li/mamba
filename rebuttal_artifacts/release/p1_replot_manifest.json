@@ -1,14 +1,14 @@
 {
   "files": {
-    "p1_functional_loss_spectrum.pdf": "86161096b6d1e643edc21910d9fd29fa4160780ef5644b960cf11c7d3ea1c4e2",
-    "p1_functional_loss_spectrum.svg": "aab46ac5a85bee151e3db7387f45773834992fd1731bcacb99d6629ae749c113"
+    "p1_functional_loss_spectrum.caption.md": "67a9de6ce11026c35a1ad4c9179df8e755a427e4de693292f5a5666ae81a7f12",
+    "p1_functional_loss_spectrum.pdf": "3b2a59dd10a7e50459ae1fad96d9b54b8cc08892fdf3172da6717a11449b2ed7",
+    "p1_functional_loss_spectrum.svg": "aec6835fabb6ca22f04415a7c1e9b01112302f858400e6170ea714589f126ee2"
   },
   "local_preview_hashes_not_published": {
-    "p1_functional_loss_spectrum.png": "6dac4e25c5450eed39841d169348dee503ba2015e515b7aca42cea285bba59cb"
+    "p1_functional_loss_spectrum.png": "b903c0a14e86639fc2bd15ff742b29ee40f28c5d3bcba5fc39d8d9f214f6708d"
   },
-  "n_selected_plotting_rows": 36,
-  "publication_selection": "PDF/SVG only; local PNG hash retained for provenance",
+  "n_selected_plotting_rows": 54,
   "scope": "retained GPT-2 functional figure only; saved estimates/CIs, no rebootstrap",
-  "script_sha256": "24e3b78513f8fe2636035fed477d05f1b3a322d27ede74831fb3970e1fe8289c",
-  "source_plotting_rows_sha256": "f5c695952b3a05d6e1560cb9d07dddeb981486669f2f3eb9e4d03343bc15ae07"
+  "script_sha256": "8eb8a150256978192c86181b17ce4b47528ea428e118b1a46753706fca4ca275",
+  "source_plotting_rows_sha256": "33d042d363d296f38bf793101e7706c6ae86d1e3474b55bf9229db288b109b73"
 }
